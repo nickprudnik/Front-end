@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { createPost } from '../actions/authentication';
 
@@ -34,13 +33,12 @@ class SignUp extends Component {
             password_confirm: this.state.password_confirm
         }
         this.props.createPost(user, this.props.history);
-        console.log(user);
     }
 
     componentWillReceiveProps(nextProps) {
-        if(nextProps.payload) {
+        if(nextProps.userData) {
             this.setState({
-                payload: nextProps.payload
+                payload: nextProps.userData
             });
         }
     }
@@ -101,12 +99,12 @@ class SignUp extends Component {
     }
 }
 
-SignUp.propTypes = {
-    createPost: PropTypes.func.isRequired,
+const mapDispatchToProps = {
+    createPost,
 };
 
 const mapStateToProps = state => ({
-    payload: state.payload
+    userData: state.userData
 });
 
-export default connect(mapStateToProps, { createPost })(withRouter(SignUp))
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SignUp))

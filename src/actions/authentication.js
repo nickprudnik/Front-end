@@ -1,10 +1,9 @@
 import { SIGN_UP } from './types';
-import axios from 'axios';
-import apiUrl from '../config';
+import { signUp } from '../api/index';
 
 export const createPost = ({ name, email, password }) => {
   return (dispatch) => {
-    return axios.post(`${apiUrl}/user/sign_up`, {name, email, password})
+    return signUp({ name, email, password })
       .then(response => {
         dispatch(createPostSuccess(response.data))
       })
