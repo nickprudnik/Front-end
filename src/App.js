@@ -6,6 +6,7 @@ import store from './redux/store';
 import Navbar from './containers/Navbar';
 import SignUp from './containers/SignUp'
 import Home from './containers/Home';
+import SignIn from './containers/SignIn';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -17,9 +18,8 @@ class App extends Component {
           <div>
             <Navbar />
               <Route exact path="/" component={ Home } />
-              <div className="container">
-                <Route exact path="/sign_up" component={ SignUp } />
-              </div>
+              <Route exact path="/sign_up" component={ SignUp } />
+              <Route exact path="/sign_in" component={ SignIn } />
           </div>
         </Router>
       </Provider>  
