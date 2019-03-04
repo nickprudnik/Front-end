@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { registerUser } from '../actions/authentication';
+import { loginUser } from '../actions/authentication';
 
-class SignUp extends Component {
+class SignIn extends Component {
 
     constructor() {
         super();
         this.state = {
-            name: '',
             email: '',
             password: '',
-            password_confirm: '',
             errors: {}
         }
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -27,37 +25,17 @@ class SignUp extends Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = {
-            name: this.state.name,
             email: this.state.email,
             password: this.state.password,
-            password_confirm: this.state.password_confirm
         }
-        this.props.registerUser(user, this.props.history);
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if(nextProps.userData) {
-            this.setState({
-                payload: nextProps.userData
-            });
-        }
+        this.props.loginUser(user);
     }
 
     render() {
         return(
         <div className="container" style={{ marginTop: '50px', width: '700px'}}>
-            <h2 style={{marginBottom: '40px'}}>Registration</h2>
+            <h2 style={{marginBottom: '40px'}}>Login</h2>
             <form onSubmit={ this.handleSubmit }>
-                <div className="form-group">
-                    <input
-                    type="text"
-                    placeholder="Name"
-                    className="form-control"
-                    name="name"
-                    onChange={ this.handleInputChange }
-                    value={ this.state.name }
-                    />
-                </div>
                 <div className="form-group">
                     <input
                     type="email"
@@ -79,18 +57,8 @@ class SignUp extends Component {
                     />
                 </div>
                 <div className="form-group">
-                    <input
-                    type="password"
-                    placeholder="Confirm Password"
-                    className="form-control"
-                    name="password_confirm"
-                    onChange={ this.handleInputChange }
-                    value={ this.state.password_confirm }
-                    />
-                </div>
-                <div className="form-group">
                     <button type="submit" className="btn btn-primary">
-                        Register User
+                        Login User
                     </button>
                 </div>
             </form>
@@ -100,11 +68,11 @@ class SignUp extends Component {
 }
 
 const mapDispatchToProps = {
-    registerUser,
+    loginUser,
 };
 
 const mapStateToProps = state => ({
     userData: state.userData
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SignUp))
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SignIn));
