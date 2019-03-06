@@ -1,7 +1,5 @@
-import { SIGN_UP } from './types';
-import { SIGN_IN } from './types';
-import { signUp } from '../api/index';
-import { signIn } from '../api/index';
+import { SIGN_UP, SIGN_IN, RESET_PASS } from './types';
+import { signUp, signIn, resetPass } from '../api/index';
 
 export const registerUser = ({ name, email, password }) => {
   return (dispatch) => {
@@ -9,12 +7,17 @@ export const registerUser = ({ name, email, password }) => {
       .then(response => {
         dispatch(registerUserSuccess(response.data))
       })
-      .then(response => {
-        dispatch(response.message)
-      })
+      // .catch(err => {
+      //   dispatch({
+      //       type: GET_ERRORS,
+      //       payload: err.response.data
+      //   });
+      // });
       .catch(error => {
-        throw(error);
+        console.log (error, '. Email already exists');
+        alert('Email already exists');
       });
+
   };
 };
 
@@ -44,6 +47,28 @@ export const loginUser = ({ email, password }) => {
 export const loginUserSuccess = (data) => {
   return {
     type: SIGN_IN,
+    payload: {
+      email: data.email,
+      password: data.password
+    }
+  }
+};
+
+export const resetPassword = ({ email, password }) => {
+  return (dispatch) => {
+    return resetPass({ email, password })
+      .then(response => {
+        dispatch(resetPasswordSuccess(response.data))
+      })
+      .catch(error => {
+        throw(error);
+      });
+  };
+};
+
+export const resetPasswordSuccess = (data) => {
+  return {
+    type: RESET_PASS,
     payload: {
       email: data.email,
       password: data.password

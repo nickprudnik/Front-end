@@ -17,6 +17,9 @@ class Navbar extends Component {
                         <li className="nav-item">
                             <a className="nav-link" href="/sign_in">Login</a>
                         </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/reset_pass">Reset Password</a>
+                        </li>
                     </ul>
                 </div>
             </nav>
