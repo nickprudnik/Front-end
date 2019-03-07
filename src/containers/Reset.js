@@ -34,7 +34,7 @@ class Reset extends Component {
     render() {
         return(
         <div className="container" style={{ marginTop: '50px', width: '700px'}}>
-            <h2 style={{marginBottom: '40px'}}>Login</h2>
+            <h2 style={{marginBottom: '40px'}}>Reset password</h2>
             <form onSubmit={ this.handleSubmit }>
                 <div className="form-group">
                     <input

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { registerUser } from '../actions/authentication';
+import classnames from 'classnames';
 
 class SignUp extends Component {
 
@@ -40,10 +41,16 @@ class SignUp extends Component {
             this.setState({
                 payload: nextProps.userData
             });
+        } 
+        if (nextProps.errors) {
+            this.setState({
+                errors: nextProps.errors
+            });
         }
     }
 
     render() {
+        const { errors } = this.state;
         return(
         <div className="container" style={{ marginTop: '50px', width: '700px'}}>
             <h2 style={{marginBottom: '40px'}}>Registration</h2>
@@ -52,41 +59,53 @@ class SignUp extends Component {
                     <input
                     type="text"
                     placeholder="Name"
-                    className="form-control"
+                    className={classnames('form-control form-control-lg', {
+                        'is-invalid': errors.name
+                    })}
                     name="name"
                     onChange={ this.handleInputChange }
                     value={ this.state.name }
                     />
+                    {errors.name && (<div className="invalid-feedback">{errors.name}</div>)}
                 </div>
                 <div className="form-group">
                     <input
                     type="email"
                     placeholder="Email"
-                    className="form-control"
+                    className={classnames('form-control form-control-lg', {
+                        'is-invalid': errors.email
+                    })}
                     name="email"
                     onChange={ this.handleInputChange }
                     value={ this.state.email }
                     />
+                    {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
                 </div>
                 <div className="form-group">
                     <input
                     type="password"
                     placeholder="Password"
-                    className="form-control"
+                    className={classnames('form-control form-control-lg', {
+                        'is-invalid': errors.password
+                    })}
                     name="password"
                     onChange={ this.handleInputChange }
                     value={ this.state.password }
                     />
+                    {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
                 </div>
                 <div className="form-group">
                     <input
                     type="password"
                     placeholder="Confirm Password"
-                    className="form-control"
+                    className={classnames('form-control form-control-lg', {
+                        'is-invalid': errors.password_confirm
+                    })}
                     name="password_confirm"
                     onChange={ this.handleInputChange }
                     value={ this.state.password_confirm }
                     />
+                    {errors.password_confirm && (<div className="invalid-feedback">{errors.password_confirm}</div>)}
                 </div>
                 <div className="form-group">
                     <button type="submit" className="btn btn-primary">
@@ -104,7 +123,8 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = state => ({
-    userData: state.userData
+    userData: state.userData,
+    errors: state.errors
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SignUp))
