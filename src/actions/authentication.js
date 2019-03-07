@@ -1,4 +1,4 @@
-import { SIGN_UP, SIGN_IN, RESET_PASS } from './types';
+import { SIGN_UP, SIGN_IN, RESET_PASS, GET_ERRORS } from './types';
 import { signUp, signIn, resetPass } from '../api/index';
 
 export const registerUser = ({ name, email, password }) => {
@@ -7,17 +7,12 @@ export const registerUser = ({ name, email, password }) => {
       .then(response => {
         dispatch(registerUserSuccess(response.data))
       })
-      // .catch(err => {
-      //   dispatch({
-      //       type: GET_ERRORS,
-      //       payload: err.response.data
-      //   });
-      // });
-      .catch(error => {
-        console.log (error, '. Email already exists');
-        alert('Email already exists');
+      .catch(err => {
+        dispatch({
+            type: GET_ERRORS,
+            payload: err.response.data
+        });
       });
-
   };
 };
 
