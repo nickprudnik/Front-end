@@ -5,12 +5,12 @@ export const registerUser = ({ name, email, password }) => {
   return (dispatch) => {
     return signUp({ name, email, password })
       .then(response => {
-        dispatch(registerUserSuccess(response.data))
+        dispatch (registerUserSuccess(response.data));
       })
-      .catch(err => {
+      .catch(error => {
         dispatch({
             type: GET_ERRORS,
-            payload: err.response.data
+            payload: error.response.data.message
         });
       });
   };
@@ -20,7 +20,6 @@ export const registerUserSuccess = (data) => {
   return {
     type: SIGN_UP,
     payload: {
-      name: data.name,
       email: data.email,
       password: data.password
     }
