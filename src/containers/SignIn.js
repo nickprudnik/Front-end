@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { loginUser } from '../actions/authentication';
+import classnames from 'classnames';
 
 class SignIn extends Component {
 
@@ -10,7 +11,6 @@ class SignIn extends Component {
         this.state = {
             email: '',
             password: '',
-            errors: {}
         }
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,6 +32,7 @@ class SignIn extends Component {
     }
 
     render() {
+        const { errors } = this.props;
         return(
         <div className="container" style={{ marginTop: '50px', width: '700px'}}>
             <h2 style={{marginBottom: '40px'}}>Login</h2>
@@ -40,21 +41,27 @@ class SignIn extends Component {
                     <input
                     type="email"
                     placeholder="Email"
-                    className="form-control"
+                    className={classnames('form-control form-control-lg', {
+                        'is-invalid': errors
+                    })}
                     name="email"
                     onChange={ this.handleInputChange }
                     value={ this.state.email }
                     />
+                    {errors && (<div className="invalid-feedback">{errors.email}</div>)}
                 </div>
                 <div className="form-group">
                     <input
                     type="password"
                     placeholder="Password"
-                    className="form-control"
+                    className={classnames('form-control form-control-lg', {
+                        'is-invalid': errors
+                    })} 
                     name="password"
                     onChange={ this.handleInputChange }
                     value={ this.state.password }
                     />
+                    {errors && (<div className="invalid-feedback">{errors.password}</div>)}
                 </div>
                 <div className="form-group">
                     <button type="submit" className="btn btn-primary">
@@ -72,7 +79,8 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = state => ({
-    userData: state.userData
+    userData: state.userData.userData,
+    errors: state.userData.error,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SignIn));
