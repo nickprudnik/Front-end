@@ -1,21 +1,6 @@
 import { SIGN_UP, SIGN_IN, RESET_PASS, GET_ERRORS } from './types';
 import { signUp, signIn, resetPass } from '../api/index';
 
-// export const registerUser = ({ name, email, password }) => {
-//   return (dispatch) => {
-//     return signUp({ name, email, password })
-//       .then(response => {
-//         dispatch (registerUserSuccess(response));
-//       })
-//       .catch(error => {
-//         dispatch({
-//             type: GET_ERRORS,
-//             payload: error.response.data.message
-//         });
-//       });
-//   };
-// };
-
 export const registerUser = (user) => dispatch => {
   signUp(user)
           .then(res => dispatch(registerUserSuccess(res)))
@@ -48,20 +33,7 @@ export const loginUser = (user) => dispatch => {
           });
 }
 
-// export const loginUser = ({ email, password }) => {
-//   return (dispatch) => {
-//     return signIn({ email, password })
-//       .then(response => {
-//         dispatch(loginUserSuccess(response.data))
-//       })
-//       .catch(err => {
-//         dispatch({
-//             type: GET_ERRORS,
-//             payload: err.response.data
-//         });
-//       });
-//   };
-// };
+
 
 export const loginUserSuccess = (data) => {
   return {
