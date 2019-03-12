@@ -3,7 +3,6 @@ import { signUp, signIn, resetPass } from '../api/index';
 // import { push } from 'react-router-dom';
 import { history } from '../App';
 
-
 export const registerUser = (user) => dispatch => {
   signUp(user)
           .then(res => dispatch(registerUserSuccess(res)))
