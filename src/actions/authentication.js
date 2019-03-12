@@ -1,5 +1,7 @@
 import { SIGN_UP, SIGN_IN, RESET_PASS, GET_ERRORS } from './types';
 import { signUp, signIn, resetPass } from '../api/index';
+// import { push } from 'react-router-dom';
+import { history } from '../App';
 
 export const registerUser = (user) => dispatch => {
   signUp(user)
@@ -24,7 +26,9 @@ export const registerUserSuccess = (data) => {
 
 export const loginUser = (user) => dispatch => {
   signIn(user)
-          .then(res => dispatch(loginUserSuccess(res)))
+          .then((res) => {
+            dispatch(loginUserSuccess(res));
+            history.push('/')})
           .catch(err => {
               dispatch({
                   type: GET_ERRORS,
@@ -32,8 +36,6 @@ export const loginUser = (user) => dispatch => {
               });
           });
 }
-
-
 
 export const loginUserSuccess = (data) => {
   return {

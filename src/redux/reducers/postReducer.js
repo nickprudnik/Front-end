@@ -7,8 +7,6 @@ const initialState = {
 };
 
 const postReducer = handleActions(
-
-export const postReducer = handleActions(
   {
     [SIGN_UP]: (state = initialState, action) => ({
       ...state, userData: action.userData
