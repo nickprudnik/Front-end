@@ -1,11 +1,13 @@
 import { SIGN_UP, SIGN_IN, RESET_PASS, GET_ERRORS } from './types';
 import { signUp, signIn, resetPass } from '../api/index';
-// import { push } from 'react-router-dom';
 import { history } from '../App';
 
 export const registerUser = (user) => dispatch => {
   signUp(user)
-          .then(res => dispatch(registerUserSuccess(res)))
+          .then((res) => {
+            dispatch(registerUserSuccess(res));
+            history.push('/')
+          })
           .catch(err => {
               dispatch({
                   type: GET_ERRORS,
@@ -50,8 +52,9 @@ export const loginUserSuccess = (data) => {
 export const resetPassword = ({ email, password }) => {
   return (dispatch) => {
     return resetPass({ email, password })
-      .then(response => {
-        dispatch(resetPasswordSuccess(response.data))
+      .then((res) => {
+        dispatch(resetPasswordSuccess(res));
+        history.push('/sign_in')
       })
       .catch(error => {
         throw(error);
