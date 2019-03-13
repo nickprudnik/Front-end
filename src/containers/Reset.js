@@ -28,7 +28,7 @@ class Reset extends Component {
             email: this.state.email,
             password: this.state.password,
         }
-        this.props.resetPassword(user);
+        this.props.resetPassword(user, this.props.history);
     }
 
     render() {

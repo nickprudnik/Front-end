@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route} from 'react-router-dom';
+import { Router, Route} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
-import createHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history';
 
 import Navbar from './containers/Navbar';
 import SignUp from './containers/SignUp'
@@ -12,13 +12,13 @@ import Reset from './containers/Reset';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export const history = createHistory();
+export const history = createBrowserHistory();
 
 class App extends Component {
   render() {
     return (
       <Provider store = { store }>
-        <BrowserRouter history = { history }> 
+        <Router history = { history }> 
           <div>
             <Navbar />
               <Route exact path="/" component={ Home } />
@@ -26,7 +26,7 @@ class App extends Component {
               <Route exact path="/sign_in" component={ SignIn } />
               <Route exact path="/reset_pass" component={ Reset } />
           </div>
-        </BrowserRouter>
+        </Router>
       </Provider>  
     );
   }
