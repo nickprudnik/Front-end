@@ -4,13 +4,13 @@ import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDB
 
 const CarouselPage = () => {
   return (
-    <MDBContainer>
+    <MDBContainer className="h-25 w-75">
       <h4 className="mt-5 mb-2">Best deals</h4>
       <MDBCarousel activeItem={1} length={4} showControls={true} showIndicators={true} className="z-depth-1">
         <MDBCarouselInner>
           <MDBCarouselItem itemId="1">
             <MDBView>
-              <img className="d-block w-100" src={require('./Images/minsk.jpg')} alt="First slide" />
+              <img className="d-block w-100" src={require('./Images/minsk.jpg')} alt="First slide"/>
               <MDBMask overlay="black-light" />
             </MDBView>
             <MDBCarouselCaption>
