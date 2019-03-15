@@ -110,7 +110,7 @@ const mapDispatchToProps = {
 
 const mapStateToProps = state => ({
     userData: state.userData.userData,
-    errors: state.userData.error,
+    errors: state.userData.error
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SignUp))

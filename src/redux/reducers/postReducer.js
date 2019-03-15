@@ -1,30 +1,33 @@
 import { handleActions } from 'redux-actions';
 import { SIGN_UP, SIGN_IN, RESET_PASS, GET_ERRORS } from '../../actions/types';
 
-const initialState = {
-  userData: null,
-  error: null
-};
+function noname () {
+  return {
+    userData: null,
+    error: null,
+    isLogged: false
+  };
+}
 
 const postReducer = handleActions(
   {
-    [SIGN_UP]: (state = initialState, action) => ({
+    [SIGN_UP]: (state, action) => ({
       ...state, userData: action.userData
     }),
 
-    [SIGN_IN]: (state = initialState, action) => ({
-     ...state, userData: action.userData
+    [SIGN_IN]: (state, action) => ({
+     ...state, userData: action.userData, isLogged: true
     }),
 
-    [RESET_PASS]: (state = initialState, action) => ({
+    [RESET_PASS]: (state, action) => ({
       ...state, userData: action.userData
     }),
 
-    [GET_ERRORS]: (state = initialState, action) => ({
+    [GET_ERRORS]: (state, action) => ({
       ...state, error: action.payload, userData: null,
     }),
   },
-  { ...initialState }
+  noname ()
 );
 
 export default postReducer;

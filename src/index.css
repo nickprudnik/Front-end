@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -6,9 +11,24 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.MainElems {
+  min-height: calc(100vh - 70px);
+}
+
+.footer {
+  text-align: center;
+  width: 100%;
+  background-color: #143248;
+  color: #fff;
+  padding-top: 20px;
+  height: 74px;
+  flex: 0;
 }

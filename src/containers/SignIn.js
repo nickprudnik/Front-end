@@ -81,6 +81,7 @@ const mapDispatchToProps = {
 const mapStateToProps = state => ({
     userData: state.userData.userData,
     errors: state.userData.error,
+    isLogged: state.isLogged
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SignIn));
