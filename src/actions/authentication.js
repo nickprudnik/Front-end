@@ -1,4 +1,4 @@
-import { SIGN_UP, SIGN_IN, RESET_PASS, GET_ERRORS } from './types';
+import { SIGN_UP_SUCCESS, SIGN_IN_SUCCESS, RESET_PASS_SUCCESS, AUTHENTICATION_HAS_ERRORED } from './types';
 import { signUp, signIn, resetPass } from '../api/index';
 import { history } from '../App';
 
@@ -10,7 +10,7 @@ export const registerUser = (user) => dispatch => {
           })
           .catch(err => {
               dispatch({
-                  type: GET_ERRORS,
+                  type: AUTHENTICATION_HAS_ERRORED,
                   payload: err.response.data
               });
           });
@@ -18,7 +18,7 @@ export const registerUser = (user) => dispatch => {
 
 export const registerUserSuccess = (data) => {
   return {
-    type: SIGN_UP,
+    type: SIGN_UP_SUCCESS,
     payload: {
       email: data.email,
       password: data.password
@@ -33,7 +33,7 @@ export const loginUser = (user) => dispatch => {
             history.push('/')})
           .catch(err => {
               dispatch({
-                  type: GET_ERRORS,
+                  type: AUTHENTICATION_HAS_ERRORED,
                   payload: err.response.data
               });
           });
@@ -41,7 +41,7 @@ export const loginUser = (user) => dispatch => {
 
 export const loginUserSuccess = (data) => {
   return {
-    type: SIGN_IN,
+    type: SIGN_IN_SUCCESS,
     payload: {
       email: data.email,
       password: data.password
@@ -64,7 +64,7 @@ export const resetPassword = ({ email, password }) => {
 
 export const resetPasswordSuccess = (data) => {
   return {
-    type: RESET_PASS,
+    type: RESET_PASS_SUCCESS,
     payload: {
       email: data.email,
       password: data.password
