@@ -23,6 +23,33 @@ code {
   min-height: calc(100vh - 70px);
 }
 
+.container-reset {
+  margin-top: 50px;
+  width: 700px;
+}
+
+.reset-headline {
+  margin-bottom: 40px;
+}
+
+.container-signin {
+  margin-top: 50px; 
+  width: 700px;
+}
+
+.signin_headline {
+  margin-bottom: 40px;
+}
+
+.headline-signup {
+  margin-top: 50px;
+  width: 700px;
+}
+
+.headline-signup {
+  margin-bottom: 40px;
+}
+
 .footer {
   text-align: center;
   width: 100%;

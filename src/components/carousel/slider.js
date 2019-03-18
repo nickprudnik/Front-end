@@ -2,9 +2,9 @@ import React from "react";
 import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDBView, MDBMask, MDBContainer } from
 "mdbreact";
 
-const CarouselPage = () => {
+const CarouselSlides = () => {
   return (
-    <MDBContainer className="h-25 w-75">
+    <MDBContainer className="w-100">
       <h4 className="mt-5 mb-2">Best deals</h4>
       <MDBCarousel activeItem={1} length={4} showControls={true} showIndicators={true} className="z-depth-1">
         <MDBCarouselInner>
@@ -54,4 +54,4 @@ const CarouselPage = () => {
   );
 }
 
-export default CarouselPage;
+export default CarouselSlides;

@@ -4,13 +4,16 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import { createBrowserHistory } from 'history';
 
+import './reset.scss';
+import './index.scss';
+
 import SignUp from './containers/SignUp'
 import Home from './containers/Home';
 import HeaderContainer from './containers/HeaderContainer';
 
 import SignIn from './containers/SignIn';
 import Reset from './containers/Reset';
-import Footer from './containers/Footer';
+import Footer from './components/Footer';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 

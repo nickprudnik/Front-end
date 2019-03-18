@@ -4,6 +4,8 @@ import { withRouter } from 'react-router-dom';
 import { loginUser } from '../actions/authentication';
 import classnames from 'classnames';
 
+import '../index.css';
+
 class SignIn extends Component {
 
     constructor() {
@@ -34,8 +36,8 @@ class SignIn extends Component {
     render() {
         const { errors } = this.props;
         return(
-        <div className="container" style={{ marginTop: '50px', width: '700px'}}>
-            <h2 style={{marginBottom: '40px'}}>Login</h2>
+        <div className="container-signin">
+            <h2 className="signin_headline">Login</h2>
             <form onSubmit={ this.handleSubmit }>
                 <div className="form-group">
                     <input

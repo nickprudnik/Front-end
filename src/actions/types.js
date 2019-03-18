@@ -1,4 +1,4 @@
-export const SIGN_UP = 'SIGN_UP';
-export const SIGN_IN = 'SIGN_IN';
-export const RESET_PASS = "RESET_PASS";
-export const GET_ERRORS = 'GET_ERRORS';
+export const SIGN_UP_SUCCESS = 'SIGN_UP';
+export const SIGN_IN_SUCCESS = 'SIGN_IN';
+export const RESET_PASS_SUCCESS = "RESET_PASS";
+export const AUTHENTICATION_HAS_ERRORED = 'GET_ERRORS';
