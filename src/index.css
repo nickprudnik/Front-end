@@ -59,3 +59,19 @@ code {
   height: 74px;
   flex: 0;
 }
+
+.carousel {
+  height: 870px;
+}
+
+.carousel-item {
+  height: 870px;
+}
+
+.carousel-item-cards {
+  width: '18rem';
+}
+
+.bscard {
+  width: '18rem';
+}

@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-import CarouselSlides from '../components/Carousel/slider';
+import ControlledCarousel from '../components/Carousel/slider';
 import Search from '../components/search/index';
+import CardsCarousel from '../components/Cards/cards'
 
 import '../reset.scss';
-// import './index.scss';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class Home extends Component {
     render() {
         return (
             <div>
-                <CarouselSlides />
+                <ControlledCarousel />
                 <Search />
+                <CardsCarousel />
             </div>    
         );
     }
