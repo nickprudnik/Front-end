@@ -72,6 +72,38 @@ code {
   width: '18rem';
 }
 
+.bscard-group {
+  padding:30px;
+}
+
 .bscard {
-  width: '18rem';
+  margin: 30px;
+  background-color: #cbdeeb !important;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-buttons {
+  background-color: #3f51b5 !important;
+  border-color: #3f51b5 !important;
+}
+
+.img2 {
+  height: 322px;
+}
+
+.card-body {
+  transition: .25s ease;
+  bottom: 40px;
+  position: absolute;
+  background:#cbdeeb9f;
+  bottom: -58px;
+}
+
+.card-body:hover {
+  transform: translateY(-40px);
+}
+
+.card-headline {
+  margin: 20px 0 0 20px;
 }

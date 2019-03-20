@@ -32,6 +32,8 @@ mock.onGet('/tickets').reply(200, {
   ],
 });
 
+//добавитб свободные места, места, (эконом/бизнес классы), багаж
+
 mock.onPost('/search-request').reply(() => axios.get('/tickets'));
 
 mock.onGet('/airports').reply(200, {
@@ -46,6 +48,7 @@ mock.onGet('/airports').reply(200, {
     { name: 'Russia' },
   ],
 });
+// добавить название аэропортов
 
 mock.onGet('/planes').reply(200, [
   {
