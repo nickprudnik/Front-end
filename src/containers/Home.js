@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import ControlledCarousel from '../components/Carousel/slider';
 import Search from '../components/search/index';
-import CardsCarousel from '../components/Cards/cards'
+import CardsCarousel from '../components/Cards/cards';
+import FlightsList from '../components/flights-list';
 
 import '../reset.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,10 +10,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export default class Home extends Component {
     render() {
         return (
-            <div>
+            <div className="main-page content">
                 <ControlledCarousel />
                 <Search />
                 <CardsCarousel />
+                <FlightsList />
             </div>    
         );
     }

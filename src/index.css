@@ -70,13 +70,18 @@ code {
 
 .carousel-item-cards {
   width: '18rem';
+  height: 400px;
 }
 
 .bscard-group {
   padding:30px;
+  padding: 0;
+  margin: 0;
 }
 
 .bscard {
+  width: 593px;
+  height: 319px;
   margin: 30px;
   background-color: #cbdeeb !important;
   overflow: hidden;
@@ -93,6 +98,7 @@ code {
 }
 
 .card-body {
+  width: 100%;
   transition: .25s ease;
   bottom: 40px;
   position: absolute;
@@ -105,5 +111,12 @@ code {
 }
 
 .card-headline {
-  margin: 20px 0 0 20px;
+  margin: 20px 0 0 30px;
+}
+
+.card-title {
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #2b43cc;
 }

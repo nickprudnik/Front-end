@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter } from 'react-router';
 import { Form, Field } from 'react-final-form';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -13,7 +12,6 @@ import { airportsFetchData } from '../../redux/search/airports/actions';
 import { ticketsFetchData } from '../../redux/search/tickets/actions';
 import styles from './material.style';
 
-import validate from './validate';
 import DatePicker from '../date-picker/index';
 import SimpleSelect from '../select';
 import TextField from '../text-field';
@@ -26,7 +24,6 @@ class Search extends React.Component {
     ticketsFetchData: PropTypes.func.isRequired,
     airportsFetchData: PropTypes.func.isRequired,
     tickets: PropTypes.array.isRequired,
-    history: PropTypes.object.isRequired,
   };
 
   componentDidMount() {
@@ -34,9 +31,8 @@ class Search extends React.Component {
   }
 
   onSubmit = async (values) => {
-    const { history } = this.props;
     this.props.ticketsFetchData('/search-request', values);
-    return this.props.tickets && history.push('/flights-list');
+    return this.props.tickets;
   };
 
   render() {
@@ -46,7 +42,7 @@ class Search extends React.Component {
       <div className="search-form-container">
         <Form
           onSubmit={this.onSubmit}
-          validate={validate}
+          
           render={({ handleSubmit }) => (
             <form className="search-form" onSubmit={handleSubmit}>
               <Field
@@ -134,8 +130,4 @@ const mapDispatchToProps = dispatch => ({
   airportsFetchData: url => dispatch(airportsFetchData(url)),
 });
 
-export default compose(
-  withRouter,
-  withStyles(styles),
-  connect(mapStateToProps, mapDispatchToProps),
-)(Search);
+export default compose(withStyles(styles),connect(mapStateToProps, mapDispatchToProps))(Search);
