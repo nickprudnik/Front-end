@@ -51,6 +51,7 @@ code {
 }
 
 .footer {
+  display: flex;
   text-align: center;
   width: 100%;
   background-color: #143248;
@@ -58,6 +59,7 @@ code {
   padding-top: 20px;
   height: 74px;
   flex: 0;
+  justify-content: space-around;
 }
 
 .carousel {
@@ -66,6 +68,10 @@ code {
 
 .carousel-item {
   height: 870px;
+}
+
+.carousel-cards {
+  margin: 0 120px 0 120px;
 }
 
 .carousel-item-cards {
@@ -119,4 +125,36 @@ code {
   font-size: 16px;
   text-transform: uppercase;
   color: #2b43cc;
+}
+
+.adress {
+ order: 0;
+}
+
+.svgImage {
+  order: 1;
+}
+
+.copyright {
+  order: 2;
+}
+
+.rcw-launcher {
+  background-color: #3f51b5 !important;
+}
+
+.rcw-conversation-container .rcw-header {
+  background-color: #3f51b5 !important;
+}
+
+.carousel-control-next, .carousel-control-prev {
+  width: 5% !important;
+}
+
+.table-responsive {
+  padding: 0 30px 0 30px;
+}
+
+.card-img-top {
+  height: 100%;
 }

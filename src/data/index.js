@@ -7,7 +7,8 @@ mock.onGet('/tickets').reply(200, {
   tickets: [
     {
       id: 1,
-      date: '16, FEB',
+      dateFrom: '25, MAR',
+      dateTo: '27, MAR',
       startTime: '6.30',
       endTime: '8.45',
       fromCountry: 'Belarus',

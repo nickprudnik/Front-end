@@ -6,10 +6,9 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import styles from './material.style';
+import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff';
 import { setSelectedFlightInfo, setTotalPrice } from '../../redux/user/actions';
 
 import Search from '../search';
@@ -48,32 +47,23 @@ class FlightsList extends React.Component {
 
     return (
       <div className="flights-container">
-        {from ? (
+        {to ? (
           <div className="flights-list__header">
-            <AppBar className={classes.root} position="fixed" color="default">
-              <Toolbar>
-                <div className="text-wrapper">
+            <List className="flights-list" disablePadding>
+              <div className="text-wrapper">
                   <Typography variant="h6" color="inherit">
                     {from} to {to}
                   </Typography>
                   <Typography color="inherit">
-                    departure {moment(departure).format('LL')}, {back && `return ${moment(back).format('LL')}`}, {adult && adult !== '0' && `adult ${adult}`} {child && child !== '0' && `child ${child}`} {infant && infant !== '0' && `infant ${infant}`}
-                    <button className="change-button" type="button" onClick={this.onclick}>
-                    Change
-                    </button>
+                    Departure {moment(departure).format('LL')}, {back && `return ${moment(back).format('LL')}`}, {adult && adult !== '0' && `adult ${adult}`} {child && child !== '0' && `child ${child}`} {infant && infant !== '0' && `infant ${infant}`}
                   </Typography>
                 </div>
-              </Toolbar>
-            </AppBar>
-
-            {this.state.isOpen && <Search />}
-          </div>
-        )
-          : <h1>Please, try to search flights</h1>}
-
-        <List className="flights-list" disablePadding>
           <FlightsListItems classes={classes} flights={this.props.tickets} setTotalPrice={this.props.setTotalPrice} setSelectedFlightInfo={this.props.setSelectedFlightInfo} />
-        </List>
+            </List>
+              {this.state.isOpen && <Search />}
+            </div>
+        )
+          : <h1>Please, try to search flights<FlightTakeoffIcon className={classes.icon} fontSize="large" /></h1>}
       </div>
     );
   }

@@ -3,19 +3,13 @@ import Typography from '@material-ui/core/Typography';
 import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff';
 import FlightLandIcon from '@material-ui/icons/FlightLand';
 import './index.scss';
+import Button from 'react-bootstrap/Button';
 
 function FlightsListItems({
-  classes, flights, setTotalPrice, setSelectedFlightInfo,
+  classes, flights,
 }) {
-  const setInfo = (price, flightInfo) => {
-    setTotalPrice(price);
-    setSelectedFlightInfo(flightInfo);
-  };
 
-  console.log(flights);
-
-  return (
-    
+  return ( 
     flights.map(({
       id, date, startTime, endTime, price, planeId,
     }) => (
@@ -32,15 +26,12 @@ function FlightsListItems({
           </Typography>
         </div>
         <div className="flights-list-item__price">
-          <button
+          <Button 
             type="button"
-            className="price-link"
-            onClick={() => setInfo(price, {
-              id, date, startTime, endTime, price, planeId,
-            })}
+            className="card-buttons"
           >
             $ {price}
-          </button>
+          </Button>
         </div>
       </div>
     ))

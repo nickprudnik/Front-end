@@ -3,8 +3,21 @@ import Card from 'react-bootstrap/Card'
 import Carousel from 'react-bootstrap/Carousel';
 import Button from 'react-bootstrap/Button';
 import CardGroup from 'react-bootstrap/CardGroup';
+import BestDeals from '../../components/Best-deals/bestDeals';
 
 class CardsCarousel extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            showBestDeals: false
+        }
+    }
+
+    onClick(e) {
+        e.preventDefault();
+        this.setState({showBestDeals: !this.state.showBestDeals})
+    }
+
     render() {
       return (
         <div className="carousel-cards">
@@ -13,14 +26,15 @@ class CardsCarousel extends React.Component {
             <Carousel.Item className="carousel-item-cards">
                 <CardGroup className="bscard-group">
                     <Card className="bscard">
-                        <span class="flag-icon flag-icon-af"></span>
+                        <span className="flag-icon flag-icon-af"></span>
                         <Card.Img variant="top" src={require('./Images/riga.jpg')} />
                         <Card.Body className="card-body">
                             <Card.Title className="card-title">Riga</Card.Title>
                             <Card.Text>
-                                From Minsk $115
+                                From Minsk $ 70
                             </Card.Text>
-                            <Button className="card-buttons">BOOK NOW</Button>
+                            <Button className="card-buttons" onClick={this.onClick.bind(this)}>BOOK NOW</Button>
+                            
                         </Card.Body>
                     </Card>
                     
@@ -29,9 +43,10 @@ class CardsCarousel extends React.Component {
                         <Card.Body>
                             <Card.Title className="card-title">Warsaw</Card.Title>
                             <Card.Text>
-                                From Kiev $125
+                                From Kiev $ 60
                             </Card.Text>
-                            <Button className="card-buttons">BOOK NOW</Button>
+                            <Button className="card-buttons" onClick={this.onClick.bind(this)}>BOOK NOW</Button>
+                            
                         </Card.Body>
                     </Card>
                     <Card className="bscard">
@@ -39,9 +54,9 @@ class CardsCarousel extends React.Component {
                         <Card.Body>
                             <Card.Title className="card-title">Vilnius</Card.Title>
                             <Card.Text>
-                                From Moscow $150
+                                From Moscow $ 65
                             </Card.Text>
-                            <Button className="card-buttons" variant="primary">BOOK NOW</Button>
+                            <Button className="card-buttons" variant="primary" onClick={this.onClick.bind(this)}>BOOK NOW</Button>
                         </Card.Body>
                     </Card>
                 </CardGroup>
@@ -53,9 +68,9 @@ class CardsCarousel extends React.Component {
                         <Card.Body>
                             <Card.Title className="card-title">Kiev</Card.Title>
                             <Card.Text>
-                                From Minsk $150
+                                From Minsk $ 65
                             </Card.Text>
-                            <Button className="card-buttons" variant="primary">BOOK NOW</Button>
+                            <Button className="card-buttons" variant="primary" onClick={this.onClick.bind(this)}>BOOK NOW</Button>
                         </Card.Body>
                     </Card>
                     <Card className="bscard">
@@ -63,9 +78,9 @@ class CardsCarousel extends React.Component {
                         <Card.Body>
                             <Card.Title className="card-title">Kiev</Card.Title>
                             <Card.Text>
-                                From Tallinn $150
+                                From Tallinn $ 35
                             </Card.Text>
-                            <Button className="card-buttons" variant="primary">BOOK NOW</Button>
+                            <Button className="card-buttons" variant="primary" onClick={this.onClick.bind(this)}>BOOK NOW</Button>
                         </Card.Body>
                     </Card>
                     <Card className="bscard">
@@ -73,14 +88,15 @@ class CardsCarousel extends React.Component {
                         <Card.Body>
                             <Card.Title className="card-title">Amsterdam</Card.Title>
                             <Card.Text>
-                                From Warsaw $125
+                                From Warsaw $ 40
                             </Card.Text>
-                            <Button className="card-buttons" variant="primary">BOOK NOW</Button>
+                            <Button className="card-buttons" variant="primary" onClick={this.onClick.bind(this)}>BOOK NOW</Button>
                         </Card.Body>
                     </Card>
                 </CardGroup>
             </Carousel.Item>
         </Carousel>
+        {this.state.showBestDeals && <BestDeals />}
         </div>  
        )
     }
