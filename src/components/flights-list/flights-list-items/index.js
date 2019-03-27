@@ -11,7 +11,7 @@ function FlightsListItems({
 
   return ( 
     flights.map(({
-      id, date, startTime, endTime, price, planeId,
+      id, date, startTime, endTime, price,
     }) => (
       <div key={id} className="flights-list-item">
         <div className="flights-list-item__info">

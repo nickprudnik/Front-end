@@ -4,8 +4,15 @@ import Carousel from 'react-bootstrap/Carousel';
 import Button from 'react-bootstrap/Button';
 import CardGroup from 'react-bootstrap/CardGroup';
 import BestDeals from '../../components/Best-deals/bestDeals';
+import { connect } from 'react-redux';
+import { ticketsFetchData } from '../../redux/search/tickets/actions';
+import PropTypes from 'prop-types';
 
 class CardsCarousel extends React.Component {
+    static propTypes = {
+        ticketsFetchData: PropTypes.func.isRequired,
+        tickets: PropTypes.array.isRequired,
+  };
     constructor() {
         super();
         this.state = {
@@ -13,9 +20,11 @@ class CardsCarousel extends React.Component {
         }
     }
 
-    onClick(e) {
+    onClick(e, value) {
         e.preventDefault();
-        this.setState({showBestDeals: !this.state.showBestDeals})
+        this.setState({showBestDeals: !this.state.showBestDeals});
+        this.props.ticketsFetchData('/tickets', value);
+        return this.props.tickets;
     }
 
     render() {
@@ -102,4 +111,12 @@ class CardsCarousel extends React.Component {
     }
 }
 
-export default CardsCarousel;
+const mapStateToProps = state => ({
+    tickets: state.searchPage.tickets.items,
+})
+
+const mapDispatchToProps = dispatch => ({
+    ticketsFetchData: (url, values) => dispatch(ticketsFetchData(url, values)),
+  });
+
+export default connect(mapStateToProps, mapDispatchToProps)(CardsCarousel);

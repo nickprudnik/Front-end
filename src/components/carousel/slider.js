@@ -33,52 +33,36 @@ class ControlledCarousel extends React.Component {
         <Carousel.Item className="carousel-item">
           <img
             className="d-block w-100"
-            src={require('./Images/minsk.jpg')}
+            src={require('./Images/MINSK2.png')}
             alt="First slide"
           />
           <Carousel.Caption className="carousel-caption">
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <h2>Minsk</h2>
+            <p>Start yout travel from here <h3>🕺</h3></p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item className="carousel-item">
           <img
             className="d-block w-100"
-            src={require('./Images/barsa.jpg')}
+            src={require('./Images/PASSPORT.jpg')}
             alt="Third slide"
           />
 
           <Carousel.Caption className="carousel-caption">
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h3>Brexit</h3>
+            <p>New travel regulations for UK passport holders</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item className="carousel-item">
           <img
             className="d-block w-100"
-            src={require('./Images/amster.jpg')}
+            src={require('./Images/LUGGAGE.png')}
             alt="Third slide"
           />
 
           <Carousel.Caption className="carousel-caption">
-            <h3>Third slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item className="carousel-item">
-          <img
-            className="d-block w-100"
-            src={require('./Images/sopot.jpg')}
-            alt="Third slide"
-          />
-
-          <Carousel.Caption className="carousel-caption">
-            <h3>Third slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
+            <h3>Your luggage</h3>
+            <p>New rules from 03/25/2019</p>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

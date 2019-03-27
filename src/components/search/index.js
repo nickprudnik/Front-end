@@ -16,7 +16,6 @@ import DatePicker from '../date-picker/index';
 import SimpleSelect from '../select';
 import TextField from '../text-field';
 import './index.scss';
-import moment from 'moment';
 
 class Search extends React.Component {
   static propTypes = {
