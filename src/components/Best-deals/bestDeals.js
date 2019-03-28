@@ -3,12 +3,13 @@ import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { ticketsFetchData } from '../../redux/search/tickets/actions';
+import moment from 'moment';
+import { bestdealsFetchData } from '../../redux/search/bestDeals/actions';
 
 class BestDeals extends React.Component {
   static propTypes = {
-    ticketsFetchData: PropTypes.func.isRequired,
-    tickets: PropTypes.array.isRequired,
+    bestdealsFetchData: PropTypes.func.isRequired,
+    bestdeals: PropTypes.array.isRequired,
   };
 
   constructor(props) {
@@ -16,17 +17,16 @@ class BestDeals extends React.Component {
   }
 
     render() {
-      const {tickets} = this.props;
+      const {bestdeals} = this.props;
       console.log(this.props);
       return (
-        tickets.map(({dateFrom, dateTo, startTime, endTime, fromCountry, toCountry, price }) => (
           <Table responsive>
         <thead>
             <tr>
             <th>Date From</th>
             <th>Date To</th>
-            <th>Start time</th>
-            <th>End time</th>
+            <th>Вeparture time</th>
+            <th>Arrival time</th>
             <th>From Country</th>
             <th>To Country</th>
             <th>Price</th>
@@ -34,29 +34,33 @@ class BestDeals extends React.Component {
             </tr>
         </thead>
         <tbody>
-            <tr>
-            <td>{dateFrom}</td>
-            <td>{dateTo}</td>
+        {bestdeals.map(({id, dateFrom, dateTo, startTime, endTime, fromCountry, toCountry, price }) => (
+            <tr key={id}>
+            <td>{moment(dateFrom).format('LL')}</td>
+            <td>{moment(dateTo).format('LL')}</td>
             <td>{startTime}</td>
             <td>{endTime}</td>
             <td>{fromCountry}</td>
             <td>{toCountry}</td>
             <td>{price}</td>
-            <td><Button className="card-buttons">BOOK NOW</Button></td>
+            <td><Button className="card-buttons">BOOK IT</Button></td>
             </tr>
+        ))}
         </tbody>
         </Table>
         )
-      ))
+      
     }
   }
 
   const mapStateToProps = state => ({
-    tickets: state.searchPage.tickets.items,
+    bestdeals: state.searchPage.bestDeals.items,
+    bestdealsHasErrored: state.searchPage.bestDeals.hasErrored,
+    bestdealsIsLoading: state.searchPage.bestDeals.isLoading,
   });
 
   const mapDispatchToProps = dispatch => ({
-    ticketsFetchData: (url, values) => dispatch(ticketsFetchData(url, values)),
+    bestdealsFetchData: (url, values) => dispatch(bestdealsFetchData(url, values)),
   });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BestDeals);

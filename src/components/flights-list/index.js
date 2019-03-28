@@ -9,7 +9,6 @@ import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import styles from './material.style';
 import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff';
-import { setSelectedFlightInfo, setTotalPrice } from '../../redux/user/actions';
 
 import Search from '../search';
 
@@ -23,8 +22,6 @@ class FlightsList extends React.Component {
     classes: PropTypes.object.isRequired,
     userRequest: PropTypes.object.isRequired,
     tickets: PropTypes.array.isRequired,
-    setTotalPrice: PropTypes.func.isRequired,
-    setSelectedFlightInfo: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -41,7 +38,7 @@ class FlightsList extends React.Component {
   render() {
     const { classes } = this.props;
     const {
-      from, to, departure, adult, child, infant,
+      to, departure, adult, child, infant, from
     } = this.props.userRequest;
     const back = this.props.userRequest.return;
 
@@ -74,9 +71,4 @@ const mapStateToProps = state => ({
   tickets: ticketsSearchSelector(state),
 });
 
-const mapDispatchToProps = dispatch => ({
-  setTotalPrice: price => dispatch(setTotalPrice(price)),
-  setSelectedFlightInfo: flightInfo => dispatch(setSelectedFlightInfo(flightInfo)),
-});
-
-export default compose(withStyles(styles), connect(mapStateToProps, mapDispatchToProps))(FlightsList);
+export default compose(withStyles(styles), connect(mapStateToProps))(FlightsList);

@@ -33,8 +33,13 @@ code {
 }
 
 .container-signin {
-  margin-top: 50px; 
-  width: 700px;
+  margin: auto; 
+  width: 600px; 
+}
+
+.container-signup {
+  margin: auto; 
+  width: 600px;
 }
 
 .signin_headline {
@@ -154,7 +159,7 @@ code {
 .table-responsive {
   padding: 0 30px 0 30px;
   margin: 0 auto;
-  width: 50% !important;
+  width: 60% !important;
 }
 
 .card-img-top {
@@ -164,4 +169,8 @@ code {
 .flights-list__header {
   margin: 40px 0 0;
   width: 35%;
+}
+
+.emodji {
+  font-size: 40px;
 }

@@ -38,7 +38,7 @@ class ControlledCarousel extends React.Component {
           />
           <Carousel.Caption className="carousel-caption">
             <h2>Minsk</h2>
-            <p>Start yout travel from here <h3>🕺</h3></p>
+            <p>Start yout travel from here <span className="emodji" role="img">🕺</span></p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item className="carousel-item">
