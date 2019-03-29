@@ -1,7 +1,15 @@
-import React from "react";
-import Carousel from 'react-bootstrap/Carousel';
+import React, { Fragment } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import Carousel from "react-bootstrap/Carousel";
+import { newsFetchData } from "../../redux/search/news/actions";
 
 class ControlledCarousel extends React.Component {
+  static propTypes = {
+    news: PropTypes.array.isRequired,
+    newsFetchData: PropTypes.func.isRequired
+  };
+
   constructor(props, context) {
     super(props, context);
 
@@ -9,66 +17,66 @@ class ControlledCarousel extends React.Component {
 
     this.state = {
       index: 0,
-      direction: null,
+      direction: null
     };
   }
 
   handleSelect(selectedIndex, e) {
     this.setState({
       index: selectedIndex,
-      direction: e.direction,
+      direction: e.direction
     });
+  }
+
+  componentDidMount() {
+    this.props.newsFetchData("/latest_news");
   }
 
   render() {
     const { index, direction } = this.state;
-
+    const { news } = this.props;
     return (
-      <Carousel className="carousel"
+      <Carousel
+        className="carousel"
         activeIndex={index}
         direction={direction}
         onSelect={this.handleSelect}
         controls={false}
       >
-        <Carousel.Item className="carousel-item">
-          <img
-            className="d-block w-100"
-            src={require('./Images/MINSK2.png')}
-            alt="First slide"
-          />
-          <Carousel.Caption className="carousel-caption">
-            <h2>Minsk</h2>
-            <p>Start yout travel from here <span className="emodji" role="img">🕺</span></p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item className="carousel-item">
-          <img
-            className="d-block w-100"
-            src={require('./Images/PASSPORT.jpg')}
-            alt="Third slide"
-          />
-
-          <Carousel.Caption className="carousel-caption">
-            <h3>Brexit</h3>
-            <p>New travel regulations for UK passport holders</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item className="carousel-item">
-          <img
-            className="d-block w-100"
-            src={require('./Images/LUGGAGE.png')}
-            alt="Third slide"
-          />
-
-          <Carousel.Caption className="carousel-caption">
-            <h3>Your luggage</h3>
-            <p>New rules from 03/25/2019</p>
-          </Carousel.Caption>
-        </Carousel.Item>
+        {news.map(item => {
+          return (
+            <Carousel.Item key={item.id} className="carousel-item">
+              <img
+                className="d-block w-100"
+                src={item.image}
+                alt="First slide"
+              />
+              <Carousel.Caption className="carousel-caption">
+                <h2>{item.new1}</h2>
+                <p>
+                  {item.about}
+                  <span className="emodji" role="img">
+                    🕺
+                  </span>
+                </p>
+              </Carousel.Caption>
+            </Carousel.Item>
+          );
+        })}
       </Carousel>
     );
   }
 }
 
+const mapStateToProps = state => ({
+  news: state.searchPage.news.items
+});
 
-export default ControlledCarousel;
+const mapDispatchToProps = dispatch => ({
+  newsFetchData: (url, values) => dispatch(newsFetchData(url, values))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ControlledCarousel);

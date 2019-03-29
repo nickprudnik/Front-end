@@ -38,7 +38,7 @@ const styles = theme => ({
       width: 80,
     },
     [theme.breakpoints.up('lg')]: {
-      width: 90,
+      width: 270,
     },
   },
   selectEmpty: {

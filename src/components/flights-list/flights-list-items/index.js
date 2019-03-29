@@ -4,6 +4,7 @@ import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff';
 import FlightLandIcon from '@material-ui/icons/FlightLand';
 import './index.scss';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 
 function FlightsListItems({
   classes, flights,
@@ -26,12 +27,14 @@ function FlightsListItems({
           </Typography>
         </div>
         <div className="flights-list-item__price">
+          <Link to="/select_seats">
           <Button 
             type="button"
             className="card-buttons"
           >
             $ {price}
           </Button>
+          </Link>
         </div>
       </div>
     ))

@@ -27,7 +27,7 @@ class Search extends React.Component {
   };
 
   componentDidMount() {
-    return this.props.airports.length || this.props.airportsFetchData('/airports');
+    this.props.airportsFetchData('/airports');
   }
 
   onSubmit = async (values) => {
@@ -85,20 +85,6 @@ class Search extends React.Component {
                 <Field
                   name="adult"
                   label="Adult"
-                  className={classes.passengers}
-                  component={TextField}
-                  variant="outlined"
-                />
-                <Field
-                  name="child"
-                  label="Child"
-                  className={classes.passengers}
-                  component={TextField}
-                  variant="outlined"
-                />
-                <Field
-                  name="infant"
-                  label="Infant"
                   className={classes.passengers}
                   component={TextField}
                   variant="outlined"
