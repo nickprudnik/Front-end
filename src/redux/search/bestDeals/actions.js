@@ -1,42 +1,46 @@
-import axios from '../../../data';
-import { BESTDEALS_HAS_ERRORED, BESTDEALS_IS_LOADING, BESTDEALS_FETCH_DATA_SUCCES } from '../actionTypes';
+import { getBestDeals } from "../../../api/index";
+import {
+  BESTDEALS_HAS_ERRORED,
+  BESTDEALS_IS_LOADING,
+  BESTDEALS_FETCH_DATA_SUCCES
+} from "../actionTypes";
 
 export function hasErrored(bool) {
   return {
     type: BESTDEALS_HAS_ERRORED,
-    hasErrored: bool,
+    hasErrored: bool
   };
 }
 
 export function isLoading(bool) {
   return {
     type: BESTDEALS_IS_LOADING,
-    isLoading: bool,
+    isLoading: bool
   };
 }
 
 export function fetchDataSuccess(items) {
   return {
     type: BESTDEALS_FETCH_DATA_SUCCES,
-    items,
+    items
   };
 }
 
-export function bestdealsFetchData(url) {
-  return (dispatch) => {
+export function bestdealsFetchData() {
+  return dispatch => {
     dispatch(isLoading(true));
 
-    axios.post(url)
-      .then((response) => {
-        if (!response.data.bestdeals.length) {
-          throw Error(response.statusText);
+    getBestDeals()
+      .then(res => {
+        if (!res.data.bestdeals.length) {
+          throw Error(res.statusText);
         }
 
         dispatch(isLoading(false));
 
-        return response;
+        return res;
       })
-      .then(response => response.data.bestdeals)
+      .then(res => res.data.bestdeals)
       .then(bestdeals => dispatch(fetchDataSuccess(bestdeals)))
       .catch(() => {
         dispatch(hasErrored(true));

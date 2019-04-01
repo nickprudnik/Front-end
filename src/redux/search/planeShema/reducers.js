@@ -1,8 +1,8 @@
 import { handleActions } from "redux-actions";
 import {
-  NEWS_FETCH_DATA_SUCCESS,
-  NEWS_HAS_ERRORED,
-  NEWS_IS_LOADING
+  PLANES_HAS_ERRORED,
+  PLANES_IS_LOADING,
+  PLANES_FETCH_DATA_SUCCESS
 } from "../actionTypes";
 
 function getInitialState() {
@@ -13,17 +13,17 @@ function getInitialState() {
   };
 }
 
-const news = handleActions(
+const plane = handleActions(
   {
-    [NEWS_HAS_ERRORED]: (state, action) => ({
+    [PLANES_HAS_ERRORED]: (state, action) => ({
       ...state,
       hasErrores: action.hasErrored
     }),
-    [NEWS_IS_LOADING]: (state, action) => ({
+    [PLANES_IS_LOADING]: (state, action) => ({
       ...state,
       isLoading: action.isLoading
     }),
-    [NEWS_FETCH_DATA_SUCCESS]: (state, action) => ({
+    [PLANES_FETCH_DATA_SUCCESS]: (state, action) => ({
       ...state,
       items: action.items
     })
@@ -31,4 +31,4 @@ const news = handleActions(
   getInitialState()
 );
 
-export default news;
+export default plane;

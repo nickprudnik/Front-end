@@ -73,7 +73,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  newsFetchData: (url, values) => dispatch(newsFetchData(url, values))
+  newsFetchData: values => dispatch(newsFetchData(values))
 });
 
 export default connect(
