@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -7,6 +7,7 @@ import { planeFetchData } from "../../redux/search/planeShema/actions";
 import Rows from "./Rows";
 
 import "./index.scss";
+import UserContact from "../../components/UserContact/UserContact";
 
 class PlaneSeats extends Component {
   static propTypes = {
@@ -16,7 +17,6 @@ class PlaneSeats extends Component {
 
   componentDidMount() {
     this.props.planeFetchData();
-    console.log(this.props);
   }
 
   render() {
@@ -24,21 +24,23 @@ class PlaneSeats extends Component {
     for (let i = 0; i < this.props.plane.rows; i++) {
       rows.push(
         <Rows
-          className={"row" + { i }}
+          className={"row"}
           subRows={this.props.plane.subRows}
           seats={this.props.plane.seats}
         />
       );
     }
-    console.log(rows);
     return (
-      <div className="plane">
-        <div class="cockpit">
-          <h1>Please select seats</h1>
+      <Fragment>
+        <div className="plane">
+          <div className="cockpit">
+            <h1>Please select seats</h1>
+          </div>
+          <div className="exit exit--front fuselage" />
+          <div className="cabin fuselage">{rows}</div>
         </div>
-        <div className="exit exit--front fuselage" />
-        <div className="cabin fuselage">{rows}</div>
-      </div>
+        <UserContact />
+      </Fragment>
     );
   }
 }

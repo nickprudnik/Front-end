@@ -6,6 +6,7 @@ class Seats extends Component {
     for (let i = 1; i <= this.props.seatsAmount; i++) {
       seats.push(
         <div className="seat">
+          <input type="checkbox" className="put-seat" />
           <label>{i}</label>
         </div>
       );

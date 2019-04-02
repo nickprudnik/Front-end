@@ -7,7 +7,7 @@ const getTickets = state => state.searchPage.tickets.items;
 const ticketsSearchSelector = createSelector(
   [getUserRequest, getTickets],
   (UserRequest, Tickets) => {
-    const fromTickets = Tickets.filter(
+    let fromTickets = Tickets.filter(
       ticket =>
         ticket.fromCountry == UserRequest.from &&
         moment(ticket.dateFrom)
@@ -15,13 +15,18 @@ const ticketsSearchSelector = createSelector(
 
           .isSame(moment(UserRequest.departure).startOf("day"))
     );
-    return fromTickets.filter(
+    fromTickets = fromTickets.filter(
       ticket2 =>
         ticket2.toCountry == UserRequest.to &&
         moment(ticket2.dateTo)
           .startOf("day")
           .isSame(moment(UserRequest.return).startOf("day"))
     );
+
+    fromTickets = fromTickets.filter(
+      ticket3 => ticket3.adult == UserRequest.adult
+    );
+    return fromTickets;
   }
 );
 

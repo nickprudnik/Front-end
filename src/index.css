@@ -33,12 +33,12 @@ code {
 }
 
 .container-signin {
-  margin: auto; 
-  width: 600px; 
+  margin: auto;
+  width: 600px;
 }
 
 .container-signup {
-  margin: auto; 
+  margin: auto;
   width: 600px;
 }
 
@@ -80,12 +80,12 @@ code {
 }
 
 .carousel-item-cards {
-  width: '18rem';
+  width: "18rem";
   height: 400px;
 }
 
 .bscard-group {
-  padding:30px;
+  padding: 30px;
   padding: 0;
   margin: 0;
 }
@@ -110,10 +110,10 @@ code {
 
 .card-body {
   width: 100%;
-  transition: .25s ease;
+  transition: 0.25s ease;
   bottom: 40px;
   position: absolute;
-  background:#cbdeeb9f;
+  background: #cbdeeb9f;
   bottom: -58px;
 }
 
@@ -133,7 +133,7 @@ code {
 }
 
 .adress {
- order: 0;
+  order: 0;
 }
 
 .svgImage {
@@ -152,7 +152,8 @@ code {
   background-color: #3f51b5 !important;
 }
 
-.carousel-control-next, .carousel-control-prev {
+.carousel-control-next,
+.carousel-control-prev {
   width: 5% !important;
 }
 
@@ -173,4 +174,8 @@ code {
 
 .emodji {
   font-size: 40px;
+}
+
+.select-gender {
+  margin-bottom: 15px;
 }
