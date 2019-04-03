@@ -7,7 +7,7 @@ class Seats extends Component {
       seats.push(
         <div className="seat">
           <input type="checkbox" className="put-seat" />
-          <label>{i}</label>
+          <label>{i + this.props.thisRowLetter}</label>
         </div>
       );
     }

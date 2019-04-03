@@ -7,7 +7,12 @@ class Rows extends Component {
     for (var i = 1; i <= this.props.subRows; i++) {
       subRows.push(
         <div className="subrow">
-          <Seats seatsAmount={this.props.seats} />
+          <Seats
+            thisRowLetter={String.fromCharCode(
+              this.props.startingLetter + i - 1
+            )}
+            seatsAmount={this.props.seats}
+          />
         </div>
       );
     }

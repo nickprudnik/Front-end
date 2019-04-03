@@ -99,6 +99,7 @@ label {
   .put-seat[type="checkbox"] {
     position: absolute;
     opacity: 0;
+    width: 100%;
   }
   .put-seat[type="checkbox"]:checked {
     + label {
@@ -156,4 +157,12 @@ label {
       box-shadow: 0 0 0px 2px #5c6aff;
     }
   }
+}
+
+.plane_seats_svg {
+  display: flex;
+}
+
+.plane_svg {
+  transform: rotate(270deg);
 }

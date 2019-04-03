@@ -53,12 +53,7 @@ class ControlledCarousel extends React.Component {
               />
               <Carousel.Caption className="carousel-caption">
                 <h2>{item.new1}</h2>
-                <p>
-                  {item.about}
-                  <span className="emodji" role="img">
-                    🕺
-                  </span>
-                </p>
+                <p>{item.about}</p>
               </Carousel.Caption>
             </Carousel.Item>
           );
