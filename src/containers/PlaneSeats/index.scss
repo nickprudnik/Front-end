@@ -8,8 +8,8 @@ html {
 }
 
 .plane {
-  margin: 0 auto;
-  max-width: 300px;
+  margin: 0;
+  max-width: 230px;
   transform: rotate(270deg);
 }
 
@@ -41,7 +41,7 @@ html {
   transform: rotate(90deg);
 }
 
-label {
+.label {
   transform: rotate(90deg);
 }
 
@@ -94,15 +94,16 @@ label {
   display: flex;
   padding: 5px;
   position: relative;
-  width: 39.95px;
-  height: 50px;
+  width: 27.95px;
+  height: 40px;
+  margin: 4px 2px;
   .put-seat[type="checkbox"] {
     position: absolute;
     opacity: 0;
     width: 100%;
   }
   .put-seat[type="checkbox"]:checked {
-    + label {
+    + .label {
       background: #f42536;
       animation-duration: 300ms;
       animation-fill-mode: both;
@@ -127,16 +128,16 @@ label {
   //     }
   //   }
   // }
-  label {
+  .label {
     display: block;
     position: relative;
     width: 100%;
     text-align: center;
-    font-size: 14px;
+    font-size: 9px;
     font-weight: bold;
     line-height: 1.5rem;
     padding: 4px 0;
-    background: #bada55;
+    background: #0f8ec9;
     border-radius: 5px;
     animation-duration: 300ms;
     animation-fill-mode: both;
@@ -160,7 +161,10 @@ label {
 }
 
 .plane_seats_svg {
-  display: flex;
+  background-image: url("./images/plane.svg");
+  background-position-y: center;
+  padding-left: 300px;
+  padding-bottom: 5px;
 }
 
 .plane_svg {
