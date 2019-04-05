@@ -12,6 +12,7 @@ class Rows extends Component {
               this.props.startingLetter + i - 1
             )}
             seatsAmount={this.props.seats}
+            onClickSeat={this.props.onClick}
           />
         </div>
       );

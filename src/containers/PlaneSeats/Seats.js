@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import Seat from "./Seat";
 
 class Seats extends Component {
   render() {
@@ -6,13 +7,10 @@ class Seats extends Component {
     for (let i = 1; i <= this.props.seatsAmount; i++) {
       seats.push(
         <div className="seat" id={i + this.props.thisRowLetter}>
-          <div className="label" id={i + this.props.thisRowLetter}>
-            {i + this.props.thisRowLetter}
-          </div>
+          <Seat id={i + this.props.thisRowLetter} />
         </div>
       );
     }
-
     return <Fragment>{seats}</Fragment>;
   }
 }

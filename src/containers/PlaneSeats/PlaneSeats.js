@@ -9,6 +9,7 @@ import Rows from "./Rows";
 import "./index.scss";
 import UserContact from "../../components/UserContact/UserContact";
 import ReservedList from "./ReservedList";
+import OrderDetails from "../../components/OrderList/OrderList";
 
 class PlaneSeats extends Component {
   constructor(props) {
@@ -31,8 +32,6 @@ class PlaneSeats extends Component {
     this.setState({
       bookedSeats: [...this.state.bookedSeats, e.target.id]
     });
-    console.log(e.target.id);
-    console.log(this.state.bookedSeats);
   };
 
   render() {
@@ -44,6 +43,7 @@ class PlaneSeats extends Component {
           startingLetter={i * 3 + 65}
           subRows={this.props.plane.subRows}
           seats={this.props.plane.seats}
+          onClick={this.bookSeat}
         />
       );
     }
@@ -61,6 +61,7 @@ class PlaneSeats extends Component {
             <div className="exit exit--front fuselage" />
           </div>
           <ReservedList bookedSeats={this.state.bookedSeats} />
+          <OrderDetails />
         </div>
         <UserContact className="user_contacts" />
       </Fragment>
