@@ -13,10 +13,6 @@ class BestDeals extends React.Component {
     bestdeals: PropTypes.array.isRequired
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { bestdeals } = this.props;
     return (

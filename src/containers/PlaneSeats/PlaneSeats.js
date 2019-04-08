@@ -8,7 +8,8 @@ import Rows from "./Rows";
 
 import "./index.scss";
 import UserContact from "../../components/UserContact/UserContact";
-import ReservedList from "./ReservedList";
+
+
 import OrderDetails from "../../components/OrderList/OrderList";
 
 class PlaneSeats extends Component {
@@ -49,19 +50,24 @@ class PlaneSeats extends Component {
     }
     return (
       <Fragment>
-        <div className="plane_seats_svg">
-          <div className="plane">
-            <div className="cockpit">
-              <h1>Please select seats</h1>
+
+        <div className="reserved_main_page">
+          <div className="plane_seats_svg">
+            <div className="plane">
+              <div className="cockpit">
+                <h1>Please select seats</h1>
+              </div>
+              <div className="exit exit--front fuselage" />
+              <div className="cabin fuselage" onClick={this.bookSeat}>
+                {rows}
+              </div>
+              <div className="exit exit--front fuselage" />
             </div>
-            <div className="exit exit--front fuselage" />
-            <div className="cabin fuselage" onClick={this.bookSeat}>
-              {rows}
-            </div>
-            <div className="exit exit--front fuselage" />
           </div>
-          <ReservedList bookedSeats={this.state.bookedSeats} />
-          <OrderDetails />
+          <div className="tickets_info">
+            <OrderDetails bookedSeats={this.state.bookedSeats} />
+          </div>
+
         </div>
         <UserContact className="user_contacts" />
       </Fragment>

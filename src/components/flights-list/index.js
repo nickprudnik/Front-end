@@ -1,12 +1,11 @@
-import React from "react";
+
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import moment from "moment";
 
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import List from "@material-ui/core/List";
+
 import styles from "./material.style";
 import FlightTakeoffIcon from "@material-ui/icons/FlightTakeoff";
 
@@ -37,33 +36,25 @@ class FlightsList extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const { to, departure, adult, from } = this.props.userRequest;
-    const back = this.props.userRequest.return;
+
+    const { to } = this.props.userRequest;
+
 
     return (
       <div className="flights-container">
         {to ? (
-          <div className="flights-list__header">
-            <List className="flights-list" disablePadding>
-              <div className="text-wrapper">
-                <Typography variant="h6" color="inherit">
-                  {from} to {to}
-                </Typography>
-                <Typography color="inherit">
-                  Departure {moment(departure).format("LL")},{" "}
-                  {back && `return ${moment(back).format("LL")}`},{" "}
-                  {adult && adult !== "0" && `adult ${adult}`}{" "}
-                </Typography>
-              </div>
-              <FlightsListItems
-                classes={classes}
-                flights={this.props.tickets}
-                setTotalPrice={this.props.setTotalPrice}
-                setSelectedFlightInfo={this.props.setSelectedFlightInfo}
-              />
-            </List>
+
+          <Fragment>
+            <FlightsListItems
+              classes={classes}
+              flights={this.props.tickets}
+              setTotalPrice={this.props.setTotalPrice}
+              setSelectedFlightInfo={this.props.setSelectedFlightInfo}
+            />
+
             {this.state.isOpen && <Search />}
-          </div>
+          </Fragment>
+
         ) : (
           <h1>
             Please, try to search flights
