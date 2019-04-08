@@ -1,0 +1,33 @@
+@import 'src/variables.scss';
+
+.flights-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px;
+}
+
+.flights-list {
+  box-shadow: $boxShadow;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__header {
+    margin-bottom: 60px;
+  }
+}
+
+.text-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.change-button {
+  margin-left: 5px;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  text-decoration: underline;
+}

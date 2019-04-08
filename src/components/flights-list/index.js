@@ -1,9 +1,11 @@
+
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
 
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
+
 import styles from "./material.style";
 import FlightTakeoffIcon from "@material-ui/icons/FlightTakeoff";
 
@@ -34,11 +36,14 @@ class FlightsList extends React.Component {
 
   render() {
     const { classes } = this.props;
+
     const { to } = this.props.userRequest;
+
 
     return (
       <div className="flights-container">
         {to ? (
+
           <Fragment>
             <FlightsListItems
               classes={classes}
@@ -49,6 +54,7 @@ class FlightsList extends React.Component {
 
             {this.state.isOpen && <Search />}
           </Fragment>
+
         ) : (
           <h1>
             Please, try to search flights

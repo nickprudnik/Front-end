@@ -1,4 +1,5 @@
 import React from "react";
+
 import "./index.scss";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
@@ -62,17 +63,3 @@ function FlightsListItems({ flights, classes }) {
 }
 
 export default FlightsListItems;
-
-{
-  /* <div className="flights-list__header">
-            <div className="text-wrapper">
-              <Typography variant="h6" color="inherit">
-                {from} to {to}
-              </Typography>
-              <Typography color="inherit">
-                Departure {moment(departure).format("LL")},{" "}
-                {back && `return ${moment(back).format("LL")}`},{" "}
-                {adult && adult !== "0" && `adult ${adult}`}{" "}
-              </Typography>
-            </div> */
-}

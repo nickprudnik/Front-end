@@ -1,3 +1,4 @@
+
 @import "src/variables.scss";
 
 .flights-container {
@@ -71,10 +72,42 @@
   &__country {
     font-weight: 350;
     color: $secondaryTextColor;
+
+@media only screen and (min-width: $mobileSize) {
+  .flights-list-item__price {
+    display: flex;
+    align-items: center;
+    padding-left: 35px;
+  }
+}
+
+@media only screen and (max-width: $mobileSize) {
+  .flights-list-item {
+    flex-direction: column;
+
+    &__price {
+      margin: 10px 0;
+    }
+  }
+}
+
+.flights-list-item {
+  display: flex;
+  justify-content: space-between;
+  min-width: 260px;
+  width: 100%;
+  padding: 15px 15px;
+  border: 1px solid $borderColor;
+  background-color: $cardBackgroundColor;
+
+  &:not(:last-child) {
+    border-bottom: none;
+
   }
 }
 
 .price-link {
+
   width: 100px;
   height: 50px;
   padding: 10px 15px;
@@ -89,10 +122,21 @@
   background-color: $primaryMaterial;
   outline: none;
 
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: $textWhiteColor;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: $fontFamily;
+  font-size: 1rem;
+  background-color: $primaryMaterial;
+
+
   &:hover {
     background-color: $primaryMaterialHover;
   }
 }
+
 
 @-webkit-keyframes sidearrowDesktop {
   0% {
@@ -195,3 +239,9 @@
 .arrow_svg {
   background-image: url("./arrowsvg.svg");
 }
+
+.card-buttons {
+  background-color: #3f51b5 !important;
+  border-color: #3f51b5 !important;
+}
+

@@ -1,0 +1,181 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.MainElems {
+  min-height: calc(100vh - 70px);
+}
+
+.container-reset {
+  margin-top: 50px;
+  width: 700px;
+}
+
+.reset-headline {
+  margin-bottom: 40px;
+}
+
+.container-signin {
+  margin: auto;
+  width: 600px;
+}
+
+.container-signup {
+  margin: auto;
+  width: 600px;
+}
+
+.signin_headline {
+  margin-bottom: 40px;
+}
+
+.headline-signup {
+  margin-top: 50px;
+  width: 700px;
+}
+
+.headline-signup {
+  margin-bottom: 40px;
+}
+
+.footer {
+  display: flex;
+  text-align: center;
+  width: 100%;
+  background-color: #143248;
+  color: #fff;
+  padding-top: 20px;
+  height: 74px;
+  flex: 0;
+  justify-content: space-around;
+}
+
+.carousel {
+  height: 870px;
+}
+
+.carousel-item {
+  height: 870px;
+}
+
+.carousel-cards {
+  margin: 0 120px 0 120px;
+}
+
+.carousel-item-cards {
+  width: "18rem";
+  height: 400px;
+}
+
+.bscard-group {
+  padding: 30px;
+  padding: 0;
+  margin: 0;
+}
+
+.bscard {
+  width: 593px;
+  height: 319px;
+  margin: 30px;
+  background-color: #cbdeeb !important;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-buttons {
+  background-color: #3f51b5 !important;
+  border-color: #3f51b5 !important;
+}
+
+.img2 {
+  height: 322px;
+}
+
+.card-body {
+  width: 100%;
+  transition: 0.25s ease;
+  bottom: 40px;
+  position: absolute;
+  background: #cbdeeb9f;
+  bottom: -58px;
+}
+
+.card-body:hover {
+  transform: translateY(-40px);
+}
+
+.card-headline {
+  margin: 0 0 0 30px;
+}
+
+.card-title {
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #2b43cc;
+}
+
+.adress {
+  order: 0;
+}
+
+.svgImage {
+  order: 1;
+}
+
+.copyright {
+  order: 2;
+}
+
+.rcw-launcher {
+  background-color: #3f51b5 !important;
+}
+
+.rcw-conversation-container .rcw-header {
+  background-color: #3f51b5 !important;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  width: 5% !important;
+}
+
+.table-responsive {
+  padding: 0 30px 0 30px;
+  margin: 0 auto;
+  width: 60% !important;
+}
+
+.card-img-top {
+  height: 100%;
+}
+
+.flights-list__header {
+  margin: 40px 0 0;
+  width: 35%;
+}
+
+.emodji {
+  font-size: 40px;
+}
+
+.select-gender {
+  margin-bottom: 15px;
+}
