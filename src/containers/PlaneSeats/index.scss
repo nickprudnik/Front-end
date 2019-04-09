@@ -148,13 +148,12 @@ html {
   background-position-y: center;
   padding-left: 300px;
   padding-bottom: 5px;
-  flex-grow: 6;
+  flex-grow: 20;
 }
 
 .plane_svg {
   transform: rotate(270deg);
 }
-
 
 .reserved_main_page {
   display: flex;
@@ -163,5 +162,7 @@ html {
 
 .tickets_info {
   flex-grow: 1;
+  background-color: #cbdeeb;
+  opacity: 0.9;
+  padding-top: 20px;
 }
-

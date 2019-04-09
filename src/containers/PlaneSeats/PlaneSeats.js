@@ -9,7 +9,6 @@ import Rows from "./Rows";
 import "./index.scss";
 import UserContact from "../../components/UserContact/UserContact";
 
-
 import OrderDetails from "../../components/OrderList/OrderList";
 
 class PlaneSeats extends Component {
@@ -50,7 +49,6 @@ class PlaneSeats extends Component {
     }
     return (
       <Fragment>
-
         <div className="reserved_main_page">
           <div className="plane_seats_svg">
             <div className="plane">
@@ -66,10 +64,9 @@ class PlaneSeats extends Component {
           </div>
           <div className="tickets_info">
             <OrderDetails bookedSeats={this.state.bookedSeats} />
+            <UserContact className="user_contacts" />
           </div>
-
         </div>
-        <UserContact className="user_contacts" />
       </Fragment>
     );
   }
