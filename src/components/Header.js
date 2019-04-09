@@ -16,7 +16,7 @@ class Header extends Component {
                             <Link className="nav-link" to="/sign_up">Sign Up</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/sign_in">Login</a>
+                            <Link className="nav-link" to="/sign_in">Login</Link>
                         </li>
                         </Fragment>
                         }
@@ -26,7 +26,7 @@ class Header extends Component {
                             <Link className="nav-link" to="/">Home</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/reset_pass">Reset Password</a>
+                            <Link className="nav-link" to="/reset_pass">Reset Password</Link>
                         </li>
                         </Fragment>
                         }

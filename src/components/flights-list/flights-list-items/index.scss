@@ -1,49 +1,197 @@
-@import 'src/variables.scss';
+@import "src/variables.scss";
 
-@media only screen and (min-width: $mobileSize) {
-  .flights-list-item__price {
-    display: flex;
-    align-items: center;
-    padding-left: 35px;
-  }
-}
-
-@media only screen and (max-width: $mobileSize) {
-  .flights-list-item {
-    flex-direction: column;
-
-    &__price {
-      margin: 10px 0;
-    }
-  }
+.flights-container {
+  display: flex;
 }
 
 .flights-list-item {
+  position: relative;
   display: flex;
   justify-content: space-between;
-  min-width: 260px;
-  width: 100%;
-  padding: 15px 15px;
-  border: 1px solid $borderColor;
-  background-color: $cardBackgroundColor;
+  width: 35%;
+  padding: 15px 25px;
+  border-bottom: 1px solid $borderColor;
+  background-color: $ticketsBackgroundColor;
+  font-family: $fontFamily;
+  box-shadow: $boxShadow;
+  flex-direction: column;
 
-  &:not(:last-child) {
-    border-bottom: none;
+  &:last-child {
+    border: none;
+  }
+
+  &__info {
+    flex-grow: 1;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+  }
+}
+
+.selectedFlight {
+  background-color: $selectedFlightBackgroundColor;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 9px;
+    background-color: $primaryMaterial;
+  }
+}
+
+.date {
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.info-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.flight {
+  display: flex;
+  flex-direction: column;
+
+  &__time {
+    margin-bottom: 5px;
+    font-size: 40px;
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+  &__country {
+    font-weight: 350;
+    color: $secondaryTextColor;
   }
 }
 
 .price-link {
+  width: 100px;
+  height: 50px;
   padding: 10px 15px;
+  border: none;
   border-radius: 5px;
-  color: $textWhiteColor;
+  cursor: pointer;
+  color: $primaryTextInvertColor;
   text-decoration: none;
   text-transform: uppercase;
   font-family: $fontFamily;
-  font-size: 1rem;
+  font-size: 1.25rem;
   background-color: $primaryMaterial;
+  outline: none;
 
   &:hover {
     background-color: $primaryMaterialHover;
   }
 }
 
+@-webkit-keyframes sidearrowDesktop {
+  0% {
+    transform: translateX(220px);
+    color: transparent;
+  }
+  50% {
+    color: $ticketPlaneAnimationColor;
+  }
+  100% {
+    transform: translateX(-220px);
+    color: transparent;
+  }
+}
+
+@-webkit-keyframes sidearrowTablet {
+  0% {
+    transform: translateX(100px);
+    color: transparent;
+  }
+  50% {
+    color: $ticketPlaneAnimationColor;
+  }
+  100% {
+    transform: translateX(-80px);
+    color: transparent;
+  }
+}
+
+@-webkit-keyframes sidearrowMobile {
+  0% {
+    transform: translateX(20px);
+    color: transparent;
+  }
+  50% {
+    color: $ticketPlaneAnimationColor;
+  }
+  100% {
+    transform: translateX(-15px);
+    color: transparent;
+  }
+}
+
+.fa-arrow {
+  animation: sidearrowDesktop 4.5s infinite reverse ease-in-out;
+}
+
+@media only screen and (max-width: $tabletSize) {
+  .flights-list-item {
+    width: 620px;
+  }
+  .flights-list__header {
+    width: 620px;
+  }
+  .fa-arrow {
+    animation: sidearrowTablet 3.5s infinite reverse ease-in-out;
+  }
+}
+
+@media only screen and (max-width: $mobileSize) {
+  .flights-list-item,
+  .flights-list__header {
+    flex-direction: column;
+    width: 260px;
+
+    &__info {
+      margin: 0 0 10px 0;
+    }
+  }
+
+  .flight {
+    &__time {
+      margin-bottom: 5px;
+      font-size: 35px;
+      font-weight: 300;
+    }
+  }
+
+  .price-link {
+    width: 260px;
+    height: 35px;
+    margin: 10px 0 0 0;
+    font-size: 1rem;
+    line-height: 100%;
+  }
+  .fa-arrow {
+    animation: sidearrowMobile 2.5s infinite reverse ease-in-out;
+  }
+}
+
+.info_price {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-buttons.price {
+  min-width: 150px;
+}
+
+.arrow_svg {
+  background-image: url("./arrowsvg.svg");
+}

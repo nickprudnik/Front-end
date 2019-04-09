@@ -1,49 +1,63 @@
-import React from 'react';
-import Typography from '@material-ui/core/Typography';
-import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff';
-import FlightLandIcon from '@material-ui/icons/FlightLand';
-import './index.scss';
+import React from "react";
 
-function FlightsListItems({
-  classes, flights, setTotalPrice, setSelectedFlightInfo,
-}) {
-  const setInfo = (price, flightInfo) => {
-    setTotalPrice(price);
-    setSelectedFlightInfo(flightInfo);
-  };
+import "./index.scss";
+import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
+import { FaPlane } from "react-icons/fa";
+import moment from "moment";
+import Typography from "@material-ui/core/Typography";
+import FlightTakeoffIcon from "@material-ui/icons/FlightTakeoff";
+import FlightLandIcon from "@material-ui/icons/FlightLand";
 
-  console.log(flights);
-
-  return (
-    
-    flights.map(({
-      id, date, startTime, endTime, price, planeId,
+function FlightsListItems({ flights, classes }) {
+  return flights.map(
+    ({
+      id,
+      startTime,
+      endTime,
+      price,
+      dateFrom,
+      dateTo,
+      fromCountry,
+      toCountry,
+      adult
     }) => (
       <div key={id} className="flights-list-item">
-        <div className="flights-list-item__info">
-          <Typography variant="subtitle1" gutterBottom>
-            {date}
+        <div className="full_flight_info">
+          <Typography variant="h6" color="inherit">
+            {fromCountry} to {toCountry}
           </Typography>
-          <Typography variant="h4" gutterBottom>
-            {startTime}
-            <FlightTakeoffIcon className={classes.icon} fontSize="large" />
-            <FlightLandIcon className={classes.icon} fontSize="large" />
-            {endTime}
+          <Typography color="inherit">
+            Departure {moment(dateFrom).format("LL")},{" "}
+            {dateTo && `return ${moment(dateTo).format("LL")}`},{" "}
+            {adult && adult !== "0" && `adult ${adult}`}{" "}
           </Typography>
         </div>
-        <div className="flights-list-item__price">
-          <button
-            type="button"
-            className="price-link"
-            onClick={() => setInfo(price, {
-              id, date, startTime, endTime, price, planeId,
-            })}
-          >
-            $ {price}
-          </button>
+        <div className="info_price">
+          <div className="flights-list-item__info">
+            <div className="info-wrapper">
+              <div className="flight">
+                <FlightTakeoffIcon className={classes.icon} fontSize="large" />
+                <span className="flight__time">{startTime}</span>
+              </div>
+              <div className="arrow_svg" />
+              <FaPlane className="fa-arrow" />
+              <div className="flight">
+                <FlightLandIcon className={classes.icon} fontSize="large" />
+                <span className="flight__time">{endTime}</span>
+              </div>
+            </div>
+          </div>
+          <div className="flights-list-item__price">
+            <Link to="/select_seats">
+              <Button type="button" className="card-buttons price">
+                $ {price}
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
-    ))
+    )
   );
 }
 
