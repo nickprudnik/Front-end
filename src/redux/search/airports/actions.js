@@ -4,10 +4,10 @@ import {
   AIRPORT_FETCH_DATA_SUCCESS
 } from "../actionTypes";
 
-export function hasErrored(bool) {
+export function isFailed(bool) {
   return {
     type: AIRPORT_HAS_ERRORED,
-    hasErrored: bool
+    isFailed: bool
   };
 }
 
@@ -21,14 +21,8 @@ export function fetchDataSuccess(items) {
 export function airportsFetchData() {
   return dispatch => {
     getAirports()
-      .then(res => {
-        if (!res.data.airports.length) {
-          throw Error(res.statusText);
-        }
-        return res;
-      })
       .then(res => res.data.airports)
       .then(airports => dispatch(fetchDataSuccess(airports)))
-      .catch(() => dispatch(hasErrored(true)));
+      .catch(() => dispatch(isFailed(true)));
   };
 }

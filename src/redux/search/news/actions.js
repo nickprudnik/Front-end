@@ -12,10 +12,10 @@ export function fetchDataSuccess(items) {
   };
 }
 
-export function hasErrored(bool) {
+export function isFailed(bool) {
   return {
     type: NEWS_HAS_ERRORED,
-    hasErrored: bool
+    isFailed: bool
   };
 }
 
@@ -30,18 +30,13 @@ export function newsFetchData({ items }) {
   return dispatch => {
     return getNews({ items })
       .then(res => {
-        if (!res.data.news.length) {
-          throw Error(res.statusText);
-        }
-
         dispatch(isLoading(false));
-
         return res;
       })
       .then(res => res.data.news)
       .then(news => dispatch(fetchDataSuccess(news)))
       .catch(() => {
-        dispatch(hasErrored(true));
+        dispatch(isFailed(true));
       });
   };
 }

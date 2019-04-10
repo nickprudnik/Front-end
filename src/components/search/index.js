@@ -30,7 +30,7 @@ class Search extends React.Component {
     this.props.airportsFetchData();
   }
 
-  onSubmit = async values => {
+  handleSubmit = async values => {
     this.props.ticketsFetchData(values);
     return this.props.tickets;
   };
@@ -41,7 +41,7 @@ class Search extends React.Component {
     return (
       <div className="search-form-container">
         <Form
-          onSubmit={this.onSubmit}
+          onSubmit={this.handleSubmit}
           render={({ handleSubmit }) => (
             <form className="search-form" onSubmit={handleSubmit}>
               <Field
@@ -116,8 +116,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  ticketsFetchData: (url, values) => dispatch(ticketsFetchData(url, values)),
-  airportsFetchData: url => dispatch(airportsFetchData(url))
+  ticketsFetchData: values => dispatch(ticketsFetchData(values)),
+  airportsFetchData: values => dispatch(airportsFetchData(values))
 });
 
 export default compose(

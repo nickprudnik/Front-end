@@ -28,7 +28,7 @@ class FlightsList extends React.Component {
     };
   }
 
-  onclick = () => {
+  onClickShowTickets = () => {
     this.setState(state => ({ isOpen: !state.isOpen }));
   };
 

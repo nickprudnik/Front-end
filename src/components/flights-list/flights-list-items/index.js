@@ -40,7 +40,6 @@ function FlightsListItems({ flights, classes }) {
                 <FlightTakeoffIcon className={classes.icon} fontSize="large" />
                 <span className="flight__time">{startTime}</span>
               </div>
-              <div className="arrow_svg" />
               <FaPlane className="fa-arrow" />
               <div className="flight">
                 <FlightLandIcon className={classes.icon} fontSize="large" />

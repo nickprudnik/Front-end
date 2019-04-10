@@ -6,17 +6,17 @@ import {
 import { setUserRequestData } from "../../user/actions";
 import { getTickets } from "../../../api/index";
 
-export function hasErrored(bool) {
+export function isFailed(bool) {
   return {
     type: TICKETS_HAS_ERRORED,
-    hasErrored: bool
+    isFailed: bool
   };
 }
 
-export function isLoading(bool) {
+export function isLoading(loading) {
   return {
     type: TICKETS_IS_LOADING,
-    isLoading: bool
+    isLoading: loading
   };
 }
 
@@ -34,18 +34,13 @@ export function ticketsFetchData(userRequest) {
 
     getTickets()
       .then(res => {
-        if (!res.data.tickets.length) {
-          throw Error(res.statusText);
-        }
-
         dispatch(isLoading(false));
-
         return res;
       })
       .then(res => res.data.tickets)
       .then(tickets => dispatch(fetchDataSuccess(tickets)))
       .catch(() => {
-        dispatch(hasErrored(true));
+        dispatch(isFailed(true));
       });
   };
 }

@@ -6,12 +6,13 @@ import {
 } from "./types";
 import { signUp, signIn, resetPass } from "../api/index";
 import { history } from "../App";
+import { HOME, SIGN_IN } from "../constants/index";
 
 export const registerUser = user => dispatch => {
   signUp(user)
     .then(res => {
       dispatch(registerUserSuccess(res));
-      history.push("/");
+      history.push(HOME);
     })
     .catch(err => {
       dispatch({
@@ -35,7 +36,7 @@ export const loginUser = user => dispatch => {
   signIn(user)
     .then(res => {
       dispatch(loginUserSuccess(res));
-      history.push("/");
+      history.push(HOME);
     })
     .catch(err => {
       dispatch({
@@ -60,7 +61,7 @@ export const resetPassword = ({ email, password }) => {
     return resetPass({ email, password })
       .then(res => {
         dispatch(resetPasswordSuccess(res));
-        history.push("/sign_in");
+        history.push(SIGN_IN);
       })
       .catch(error => {
         throw error;

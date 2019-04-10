@@ -7,7 +7,7 @@ import {
 function getInitialState() {
   return {
     items: [],
-    hasErrored: false
+    isFailed: false
   };
 }
 
@@ -19,7 +19,7 @@ const airports = handleActions(
     }),
     [AIRPORT_HAS_ERRORED]: (state, action) => ({
       ...state,
-      hasErrored: action.hasErrored
+      isFailed: action.isFailed
     })
   },
   getInitialState()
