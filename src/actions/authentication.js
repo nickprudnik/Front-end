@@ -64,7 +64,7 @@ export const resetPassword = ({ email, password }) => {
         history.push(SIGN_IN);
       })
       .catch(error => {
-        throw(error);
+        
       });
   };
 };
