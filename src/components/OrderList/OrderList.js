@@ -8,30 +8,7 @@ import { FaCheck } from "react-icons/fa";
 import "./index.scss";
 import ticketsSearchSelector from "../../selectors/ticketsSearchSelector";
 
-import Modal from "react-modal";
-
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)"
-  }
-};
-
 class OrderDetails extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      modalIsOpen: false
-    };
-  }
-
-  triggerModal = () => this.setState({ modalIsOpen: !this.state.modalIsOpen });
-  triggerModal1 = () => this.setState({ modalIsOpen: this.state.modalIsOpen });
-
   static propTypes = {
     tickets: PropTypes.array.isRequired
   };
@@ -94,22 +71,7 @@ class OrderDetails extends React.Component {
             )
           )}
         </section>
-        <Modal
-          isOpen={this.state.modalIsOpen}
-          ariaHideApp={false}
-          onRequestClose={this.state.modalIsOpen}
-          shouldCloseOnOverlayClick={true}
-          shouldCloseOnEsc={true}
-          style={customStyles}
-        >
-          <h1>Никита</h1>
-          <button onClick={this.triggerModal1}>Close</button>
-        </Modal>
-        <button
-          type="button"
-          className="button confirm"
-          onClick={this.triggerModal}
-        >
+        <button type="button" className="button confirm">
           Confirm
         </button>
       </section>
