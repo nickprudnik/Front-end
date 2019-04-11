@@ -60,7 +60,7 @@ class PassengersList extends Component {
           <form onSubmit={handleSubmit}>
             <FieldArray name="information">
               {() =>
-                passengersAmount.map((elem, index) => (
+                passengersAmount.map(index => (
                   <div className="passenger_list_information">
                     <div className="expandable-panel" key={index}>
                       <Header index={index} />

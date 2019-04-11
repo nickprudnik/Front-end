@@ -7,7 +7,7 @@ import moment from "moment";
 import { FaCheck } from "react-icons/fa";
 import "./index.scss";
 import ticketsSearchSelector from "../../selectors/ticketsSearchSelector";
-import PassengersSeatsTable from "../../containers/PassengerSeats/index";
+import SeatsChoice from "../../containers/PassengerSeats/index";
 
 class OrderDetails extends React.Component {
   static propTypes = {
@@ -72,7 +72,7 @@ class OrderDetails extends React.Component {
             )
           )}
         </section>
-        <PassengersSeatsTable />
+        <SeatsChoice />
         <button type="button" className="button confirm">
           Confirm
         </button>

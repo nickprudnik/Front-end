@@ -52,7 +52,20 @@ function FlightsListItems({ flights, classes, setSelectedFlightInfo }) {
           </div>
           <div className="flights-list-item__price">
             <Link to="/passenger_list">
-              <Button type="button" className="card-buttons price">
+              <Button
+                type="button"
+                className="card-buttons price"
+                onClick={() =>
+                  setInfo(price, {
+                    id,
+                    dateFrom,
+                    dateTo,
+                    startTime,
+                    endTime,
+                    price
+                  })
+                }
+              >
                 $ {price}
               </Button>
             </Link>
