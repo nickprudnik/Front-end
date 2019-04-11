@@ -33,13 +33,8 @@ code {
 }
 
 .container-signin {
-  margin: auto;
-  width: 600px;
-}
-
-.container-signup {
-  margin: auto;
-  width: 600px;
+  margin-top: 50px; 
+  width: 700px;
 }
 
 .signin_headline {
@@ -56,7 +51,6 @@ code {
 }
 
 .footer {
-  display: flex;
   text-align: center;
   width: 100%;
   background-color: #143248;
@@ -64,7 +58,6 @@ code {
   padding-top: 20px;
   height: 74px;
   flex: 0;
-  justify-content: space-around;
 }
 
 .carousel {
@@ -75,17 +68,13 @@ code {
   height: 870px;
 }
 
-.carousel-cards {
-  margin: 0 120px 0 120px;
-}
-
 .carousel-item-cards {
-  width: "18rem";
+  width: '18rem';
   height: 400px;
 }
 
 .bscard-group {
-  padding: 30px;
+  padding:30px;
   padding: 0;
   margin: 0;
 }
@@ -110,10 +99,10 @@ code {
 
 .card-body {
   width: 100%;
-  transition: 0.25s ease;
+  transition: .25s ease;
   bottom: 40px;
   position: absolute;
-  background: #cbdeeb9f;
+  background:#cbdeeb9f;
   bottom: -58px;
 }
 
@@ -122,7 +111,7 @@ code {
 }
 
 .card-headline {
-  margin: 0 0 0 30px;
+  margin: 20px 0 0 30px;
 }
 
 .card-title {
@@ -130,52 +119,4 @@ code {
   font-size: 16px;
   text-transform: uppercase;
   color: #2b43cc;
-}
-
-.adress {
-  order: 0;
-}
-
-.svgImage {
-  order: 1;
-}
-
-.copyright {
-  order: 2;
-}
-
-.rcw-launcher {
-  background-color: #3f51b5 !important;
-}
-
-.rcw-conversation-container .rcw-header {
-  background-color: #3f51b5 !important;
-}
-
-.carousel-control-next,
-.carousel-control-prev {
-  width: 5% !important;
-}
-
-.table-responsive {
-  padding: 0 30px 0 30px;
-  margin: 0 auto;
-  width: 60% !important;
-}
-
-.card-img-top {
-  height: 100%;
-}
-
-.flights-list__header {
-  margin: 40px 0 0;
-  width: 35%;
-}
-
-.emodji {
-  font-size: 40px;
-}
-
-.select-gender {
-  margin-bottom: 15px;
 }

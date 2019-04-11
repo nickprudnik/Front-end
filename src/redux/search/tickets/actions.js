@@ -1,10 +1,6 @@
-import {
-  TICKETS_HAS_ERRORED,
-  TICKETS_IS_LOADING,
-  TICKETS_FETCH_DATA_SUCCESS
-} from "../actionTypes";
-import { setUserRequestData } from "../../user/actions";
-import { getTickets } from "../../../api/index";
+import axios from '../../../data';
+import { TICKETS_HAS_ERRORED, TICKETS_IS_LOADING, TICKETS_FETCH_DATA_SUCCESS } from '../actionTypes';
+import { setUserRequestData } from '../../user/actions';
 
 export function isFailed(bool) {
   return {
@@ -23,12 +19,12 @@ export function isLoading(loading) {
 export function fetchDataSuccess(items) {
   return {
     type: TICKETS_FETCH_DATA_SUCCESS,
-    items
+    items,
   };
 }
 
-export function ticketsFetchData(userRequest) {
-  return dispatch => {
+export function ticketsFetchData(url, userRequest) {
+  return (dispatch) => {
     dispatch(isLoading(true));
     dispatch(setUserRequestData(userRequest));
 
@@ -37,7 +33,7 @@ export function ticketsFetchData(userRequest) {
         dispatch(isLoading(false));
         return res;
       })
-      .then(res => res.data.tickets)
+      .then(response => response.data.tickets)
       .then(tickets => dispatch(fetchDataSuccess(tickets)))
       .catch(() => {
         dispatch(isFailed(true));

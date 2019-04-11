@@ -26,14 +26,15 @@ function FlightsListItems({ flights, classes, setSelectedFlightInfo }) {
       adult
     }) => (
       <div key={id} className="flights-list-item">
-        <div className="full_flight_info">
-          <Typography variant="h6" color="inherit">
-            {fromCountry} to {toCountry}
+        <div className="flights-list-item__info">
+          <Typography variant="subtitle1" gutterBottom>
+            {date}
           </Typography>
-          <Typography color="inherit">
-            Departure {moment(dateFrom).format("LL")},{" "}
-            {dateTo && `return ${moment(dateTo).format("LL")}`},{" "}
-            {adult && adult !== "0" && `adult ${adult}`}{" "}
+          <Typography variant="h4" gutterBottom>
+            {startTime}
+            <FlightTakeoffIcon className={classes.icon} fontSize="large" />
+            <FlightLandIcon className={classes.icon} fontSize="large" />
+            {endTime}
           </Typography>
         </div>
         <div className="info_price">
@@ -70,8 +71,8 @@ function FlightsListItems({ flights, classes, setSelectedFlightInfo }) {
           </div>
         </div>
       </div>
-    )
-  );
+    ))
+  
 }
 
 export default FlightsListItems;

@@ -22,12 +22,15 @@
     "react": "^16.8.2",
     "react-autocomplete": "^1.8.1",
     "react-bootstrap": "^1.0.0-beta.5",
-    "react-chat-widget": "^2.1.4-1",
     "react-dom": "^16.8.2",
     "react-final-form": "^4.1.0",
+<<<<<<< HEAD
     "react-final-form-arrays": "^2.0.3",
     "react-icons": "^3.5.0",
     "react-modal": "^3.8.1",
+=======
+    "react-final-form-arrays": "^2.0.2",
+>>>>>>> origin/revert-27-order-list
     "react-redux": "^6.0.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",

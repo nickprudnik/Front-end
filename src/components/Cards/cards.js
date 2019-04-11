@@ -1,31 +1,10 @@
 import React from "react";
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card'
 import Carousel from 'react-bootstrap/Carousel';
 import Button from 'react-bootstrap/Button';
 import CardGroup from 'react-bootstrap/CardGroup';
-import BestDeals from '../../components/Best-deals/bestDeals';
-import { bestdealsFetchData } from '../../redux/search/bestDeals/actions';
 
 class CardsCarousel extends React.Component {
-    static propTypes = {
-        bestdealsFetchData: PropTypes.func.isRequired,
-        bestdeals: PropTypes.array.isRequired,
-  };
-    constructor() {
-        super();
-        this.state = {
-            showBestDeals: false
-        }
-    }
-
-    onClick(e, values) {
-        e.preventDefault();
-        this.setState({showBestDeals: !this.state.showBestDeals});
-        this.props.bestdealsFetchData('/search_bestdeals', values);
-    }
-
     render() {
       return (
         <div className="carousel-cards">
@@ -34,15 +13,14 @@ class CardsCarousel extends React.Component {
             <Carousel.Item className="carousel-item-cards">
                 <CardGroup className="bscard-group">
                     <Card className="bscard">
-                        <span className="flag-icon flag-icon-af"></span>
+                        <span class="flag-icon flag-icon-af"></span>
                         <Card.Img variant="top" src={require('./Images/riga.jpg')} />
                         <Card.Body className="card-body">
                             <Card.Title className="card-title">Riga</Card.Title>
                             <Card.Text>
-                                From Minsk $ 70
+                                From Minsk $115
                             </Card.Text>
-                            <Button className="card-buttons" onClick={this.onClick.bind(this)}>BOOK NOW</Button>
-                            
+                            <Button className="card-buttons">BOOK NOW</Button>
                         </Card.Body>
                     </Card>
                     
@@ -51,10 +29,9 @@ class CardsCarousel extends React.Component {
                         <Card.Body>
                             <Card.Title className="card-title">Warsaw</Card.Title>
                             <Card.Text>
-                                From Kiev $ 60
+                                From Kiev $125
                             </Card.Text>
-                            <Button className="card-buttons" onClick={this.onClick.bind(this)}>BOOK NOW</Button>
-                            
+                            <Button className="card-buttons">BOOK NOW</Button>
                         </Card.Body>
                     </Card>
                     <Card className="bscard">
@@ -62,9 +39,9 @@ class CardsCarousel extends React.Component {
                         <Card.Body>
                             <Card.Title className="card-title">Vilnius</Card.Title>
                             <Card.Text>
-                                From Moscow $ 65
+                                From Moscow $150
                             </Card.Text>
-                            <Button className="card-buttons" variant="primary" onClick={this.onClick.bind(this)}>BOOK NOW</Button>
+                            <Button className="card-buttons" variant="primary">BOOK NOW</Button>
                         </Card.Body>
                     </Card>
                 </CardGroup>
@@ -76,19 +53,19 @@ class CardsCarousel extends React.Component {
                         <Card.Body>
                             <Card.Title className="card-title">Kiev</Card.Title>
                             <Card.Text>
-                                From Minsk $ 65
+                                From Minsk $150
                             </Card.Text>
-                            <Button className="card-buttons" variant="primary" onClick={this.onClick.bind(this)}>BOOK NOW</Button>
+                            <Button className="card-buttons" variant="primary">BOOK NOW</Button>
                         </Card.Body>
                     </Card>
                     <Card className="bscard">
                         <Card.Img variant="top" src={require('./Images/Krakow.jpg')} />
                         <Card.Body>
-                            <Card.Title className="card-title">Tallinn</Card.Title>
+                            <Card.Title className="card-title">Kiev</Card.Title>
                             <Card.Text>
-                                From Kiev $ 35
+                                From Tallinn $150
                             </Card.Text>
-                            <Button className="card-buttons" variant="primary" onClick={this.onClick.bind(this)}>BOOK NOW</Button>
+                            <Button className="card-buttons" variant="primary">BOOK NOW</Button>
                         </Card.Body>
                     </Card>
                     <Card className="bscard">
@@ -96,28 +73,17 @@ class CardsCarousel extends React.Component {
                         <Card.Body>
                             <Card.Title className="card-title">Amsterdam</Card.Title>
                             <Card.Text>
-                                From Warsaw $ 40
+                                From Warsaw $125
                             </Card.Text>
-                            <Button className="card-buttons" variant="primary" onClick={this.onClick.bind(this)}>BOOK NOW</Button>
+                            <Button className="card-buttons" variant="primary">BOOK NOW</Button>
                         </Card.Body>
                     </Card>
                 </CardGroup>
             </Carousel.Item>
         </Carousel>
-        {this.state.showBestDeals && <BestDeals />}
         </div>  
        )
     }
 }
 
-const mapStateToProps = state => ({
-    bestdeals: state.searchPage.bestDeals.items,
-    bestdealsHasErrored: state.searchPage.bestDeals.hasErrored,
-    bestdealsIsLoading: state.searchPage.bestDeals.isLoading,
-})
-
-const mapDispatchToProps = dispatch => ({
-    bestdealsFetchData: (url, values) => dispatch(bestdealsFetchData(url, values)),
-  });
-
-export default connect(mapStateToProps, mapDispatchToProps)(CardsCarousel);
+export default CardsCarousel;

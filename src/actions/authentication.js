@@ -8,7 +8,7 @@ import { signUp, signIn, resetPass } from "../api/index";
 import { history } from "../App";
 import { HOME, SIGN_IN } from "../constants/index";
 
-export const registerUser = user => dispatch => {
+export const registerUser = (user) => dispatch => {
   signUp(user)
     .then(res => {
       dispatch(registerUserSuccess(res));
@@ -22,17 +22,17 @@ export const registerUser = user => dispatch => {
     });
 };
 
-export const registerUserSuccess = data => {
+export const registerUserSuccess = (data) => {
   return {
     type: SIGN_UP_SUCCESS,
     payload: {
       email: data.email,
       password: data.password
     }
-  };
+  }
 };
 
-export const loginUser = user => dispatch => {
+export const loginUser = (user) => dispatch => {
   signIn(user)
     .then(res => {
       dispatch(loginUserSuccess(res));
@@ -46,35 +46,35 @@ export const loginUser = user => dispatch => {
     });
 };
 
-export const loginUserSuccess = data => {
+export const loginUserSuccess = (data) => {
   return {
     type: SIGN_IN_SUCCESS,
     payload: {
       email: data.email,
       password: data.password
     }
-  };
+  }
 };
 
 export const resetPassword = ({ email, password }) => {
-  return dispatch => {
+  return (dispatch) => {
     return resetPass({ email, password })
-      .then(res => {
+      .then((res) => {
         dispatch(resetPasswordSuccess(res));
         history.push(SIGN_IN);
       })
       .catch(error => {
-        throw error;
+        throw(error);
       });
   };
 };
 
-export const resetPasswordSuccess = data => {
+export const resetPasswordSuccess = (data) => {
   return {
     type: RESET_PASS_SUCCESS,
     payload: {
       email: data.email,
       password: data.password
     }
-  };
+  }
 };

@@ -1,21 +1,21 @@
-import React from "react";
-import { Form, Field } from "react-final-form";
-import { connect } from "react-redux";
-import { compose } from "redux";
+import React from 'react';
+import { Form, Field } from 'react-final-form';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import DateFnsUtils from "@date-io/date-fns";
-import { MuiPickersUtilsProvider } from "material-ui-pickers";
-import { airportsFetchData } from "../../redux/search/airports/actions";
-import { ticketsFetchData } from "../../redux/search/tickets/actions";
-import styles from "./material.style";
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import DateFnsUtils from '@date-io/date-fns';
+import { MuiPickersUtilsProvider } from 'material-ui-pickers';
+import { airportsFetchData } from '../../redux/search/airports/actions';
+import { ticketsFetchData } from '../../redux/search/tickets/actions';
+import styles from './material.style';
 
-import DatePicker from "../date-picker/index";
-import SimpleSelect from "../select";
-import TextField from "../text-field";
-import "./index.scss";
+import DatePicker from '../date-picker/index';
+import SimpleSelect from '../select';
+import TextField from '../text-field';
+import './index.scss';
 
 class Search extends React.Component {
   static propTypes = {
@@ -23,15 +23,20 @@ class Search extends React.Component {
     airports: PropTypes.array.isRequired,
     ticketsFetchData: PropTypes.func.isRequired,
     airportsFetchData: PropTypes.func.isRequired,
-    tickets: PropTypes.array.isRequired
+    tickets: PropTypes.array.isRequired,
   };
 
   componentDidMount() {
-    this.props.airportsFetchData();
+    return this.props.airports.length || this.props.airportsFetchData('/airports');
   }
 
+<<<<<<< HEAD
   handleSubmit = async values => {
     this.props.ticketsFetchData(values);
+=======
+  onSubmit = async (values) => {
+    this.props.ticketsFetchData('/search-request', values);
+>>>>>>> origin/revert-27-order-list
     return this.props.tickets;
   };
 
@@ -41,7 +46,12 @@ class Search extends React.Component {
     return (
       <div className="search-form-container">
         <Form
+<<<<<<< HEAD
           onSubmit={this.handleSubmit}
+=======
+          onSubmit={this.onSubmit}
+          
+>>>>>>> origin/revert-27-order-list
           render={({ handleSubmit }) => (
             <form className="search-form" onSubmit={handleSubmit}>
               <Field
@@ -88,14 +98,23 @@ class Search extends React.Component {
                   component={TextField}
                   variant="outlined"
                 />
+                <Field
+                  name="child"
+                  label="Child"
+                  className={classes.passengers}
+                  component={TextField}
+                  variant="outlined"
+                />
+                <Field
+                  name="infant"
+                  label="Infant"
+                  className={classes.passengers}
+                  component={TextField}
+                  variant="outlined"
+                />
               </div>
 
-              <Button
-                variant="contained"
-                color="primary"
-                className={classes.button}
-                type="submit"
-              >
+              <Button variant="contained" color="primary" className={classes.button} type="submit">
                 Search
               </Button>
             </form>
@@ -112,18 +131,17 @@ const mapStateToProps = state => ({
   ticketsHasErrored: state.searchPage.tickets.hasErrored,
   ticketsIsLoading: state.searchPage.tickets.isLoading,
   airports: state.searchPage.airports.items,
-  airportsHaveErrored: state.searchPage.airports.hasErrored
+  airportsHaveErrored: state.searchPage.airports.hasErrored,
 });
 
 const mapDispatchToProps = dispatch => ({
+<<<<<<< HEAD
   ticketsFetchData: values => dispatch(ticketsFetchData(values)),
   airportsFetchData: values => dispatch(airportsFetchData(values))
+=======
+  ticketsFetchData: (url, values) => dispatch(ticketsFetchData(url, values)),
+  airportsFetchData: url => dispatch(airportsFetchData(url)),
+>>>>>>> origin/revert-27-order-list
 });
 
-export default compose(
-  withStyles(styles),
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
-)(Search);
+export default compose(withStyles(styles),connect(mapStateToProps, mapDispatchToProps))(Search);
