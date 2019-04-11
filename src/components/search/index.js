@@ -30,8 +30,13 @@ class Search extends React.Component {
     return this.props.airports.length || this.props.airportsFetchData('/airports');
   }
 
+<<<<<<< HEAD
+  handleSubmit = async values => {
+    this.props.ticketsFetchData(values);
+=======
   onSubmit = async (values) => {
     this.props.ticketsFetchData('/search-request', values);
+>>>>>>> origin/revert-27-order-list
     return this.props.tickets;
   };
 
@@ -41,8 +46,12 @@ class Search extends React.Component {
     return (
       <div className="search-form-container">
         <Form
+<<<<<<< HEAD
+          onSubmit={this.handleSubmit}
+=======
           onSubmit={this.onSubmit}
           
+>>>>>>> origin/revert-27-order-list
           render={({ handleSubmit }) => (
             <form className="search-form" onSubmit={handleSubmit}>
               <Field
@@ -126,8 +135,13 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+<<<<<<< HEAD
+  ticketsFetchData: values => dispatch(ticketsFetchData(values)),
+  airportsFetchData: values => dispatch(airportsFetchData(values))
+=======
   ticketsFetchData: (url, values) => dispatch(ticketsFetchData(url, values)),
   airportsFetchData: url => dispatch(airportsFetchData(url)),
+>>>>>>> origin/revert-27-order-list
 });
 
 export default compose(withStyles(styles),connect(mapStateToProps, mapDispatchToProps))(Search);

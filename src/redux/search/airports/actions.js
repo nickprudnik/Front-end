@@ -1,10 +1,14 @@
 import axios from '../../../data';
 import { AIRPORT_HAS_ERRORED, AIRPORT_FETCH_DATA_SUCCESS } from '../actionTypes';
 
-export function hasErrored(bool) {
+export function isFailed(bool) {
   return {
     type: AIRPORT_HAS_ERRORED,
+<<<<<<< HEAD
+    isFailed: bool
+=======
     hasErrored: bool,
+>>>>>>> origin/revert-27-order-list
   };
 }
 
@@ -15,6 +19,12 @@ export function fetchDataSuccess(items) {
   };
 }
 
+<<<<<<< HEAD
+export function airportsFetchData() {
+  return dispatch => {
+    getAirports()
+      .then(res => res.data.airports)
+=======
 export function airportsFetchData(url) {
   return (dispatch) => {
     axios.get(url)
@@ -25,7 +35,8 @@ export function airportsFetchData(url) {
         return response;
       })
       .then(response => response.data.airports)
+>>>>>>> origin/revert-27-order-list
       .then(airports => dispatch(fetchDataSuccess(airports)))
-      .catch(() => dispatch(hasErrored(true)));
+      .catch(() => dispatch(isFailed(true)));
   };
 }

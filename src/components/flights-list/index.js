@@ -14,8 +14,9 @@ import { setSelectedFlightInfo, setTotalPrice } from '../../redux/user/actions';
 
 import Search from '../search';
 
-import FlightsListItems from './flights-list-items';
-import './index.scss';
+import FlightsListItems from "./flights-list-items";
+import "./index.scss";
+import { setSelectedFlightInfo } from "../../redux/user/actions";
 
 import ticketsSearchSelector from '../../selectors/ticketsSearchSelector';
 
@@ -24,8 +25,7 @@ class FlightsList extends React.Component {
     classes: PropTypes.object.isRequired,
     userRequest: PropTypes.object.isRequired,
     tickets: PropTypes.array.isRequired,
-    setTotalPrice: PropTypes.func.isRequired,
-    setSelectedFlightInfo: PropTypes.func.isRequired,
+    setSelectedFlightInfo: PropTypes.func.isRequired
   };
 
   constructor(props) {
@@ -35,7 +35,7 @@ class FlightsList extends React.Component {
     };
   }
 
-  onclick = () => {
+  onClickShowTickets = () => {
     this.setState(state => ({ isOpen: !state.isOpen }));
   }
 
@@ -89,4 +89,15 @@ const mapDispatchToProps = dispatch => ({
   setSelectedFlightInfo: flightInfo => dispatch(setSelectedFlightInfo(flightInfo)),
 });
 
-export default compose(withStyles(styles), connect(mapStateToProps, mapDispatchToProps))(FlightsList);
+const mapDispatchToProps = dispatch => ({
+  setSelectedFlightInfo: flightInfo =>
+    dispatch(setSelectedFlightInfo(flightInfo))
+});
+
+export default compose(
+  withStyles(styles),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
+)(FlightsList);

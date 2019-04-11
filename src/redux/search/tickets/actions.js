@@ -2,17 +2,17 @@ import axios from '../../../data';
 import { TICKETS_HAS_ERRORED, TICKETS_IS_LOADING, TICKETS_FETCH_DATA_SUCCESS } from '../actionTypes';
 import { setUserRequestData } from '../../user/actions';
 
-export function hasErrored(bool) {
+export function isFailed(bool) {
   return {
     type: TICKETS_HAS_ERRORED,
-    hasErrored: bool,
+    isFailed: bool
   };
 }
 
-export function isLoading(bool) {
+export function isLoading(loading) {
   return {
     type: TICKETS_IS_LOADING,
-    isLoading: bool,
+    isLoading: loading
   };
 }
 
@@ -28,20 +28,15 @@ export function ticketsFetchData(url, userRequest) {
     dispatch(isLoading(true));
     dispatch(setUserRequestData(userRequest));
 
-    axios.post(url)
-      .then((response) => {
-        if (!response.data.tickets.length) {
-          throw Error(response.statusText);
-        }
-
+    getTickets()
+      .then(res => {
         dispatch(isLoading(false));
-
-        return response;
+        return res;
       })
       .then(response => response.data.tickets)
       .then(tickets => dispatch(fetchDataSuccess(tickets)))
       .catch(() => {
-        dispatch(hasErrored(true));
+        dispatch(isFailed(true));
       });
   };
 }

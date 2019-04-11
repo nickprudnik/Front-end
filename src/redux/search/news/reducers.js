@@ -1,8 +1,8 @@
 import { handleActions } from "redux-actions";
 import {
-  TICKETS_IS_LOADING,
-  TICKETS_HAS_ERRORED,
-  TICKETS_FETCH_DATA_SUCCESS
+  NEWS_FETCH_DATA_SUCCESS,
+  NEWS_HAS_ERRORED,
+  NEWS_IS_LOADING
 } from "../actionTypes";
 
 function getInitialState() {
@@ -13,17 +13,17 @@ function getInitialState() {
   };
 }
 
-const tickets = handleActions(
+const news = handleActions(
   {
-    [TICKETS_HAS_ERRORED]: (state, action) => ({
+    [NEWS_HAS_ERRORED]: (state, action) => ({
       ...state,
       isFailed: action.isFailed
     }),
-    [TICKETS_IS_LOADING]: (state, action) => ({
+    [NEWS_IS_LOADING]: (state, action) => ({
       ...state,
       isLoading: action.isLoading
     }),
-    [TICKETS_FETCH_DATA_SUCCESS]: (state, action) => ({
+    [NEWS_FETCH_DATA_SUCCESS]: (state, action) => ({
       ...state,
       items: action.items
     })
@@ -31,4 +31,4 @@ const tickets = handleActions(
   getInitialState()
 );
 
-export default tickets;
+export default news;
