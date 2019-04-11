@@ -1,5 +1,4 @@
 import React from "react";
-
 import "./index.scss";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
@@ -9,7 +8,11 @@ import Typography from "@material-ui/core/Typography";
 import FlightTakeoffIcon from "@material-ui/icons/FlightTakeoff";
 import FlightLandIcon from "@material-ui/icons/FlightLand";
 
-function FlightsListItems({ flights, classes }) {
+function FlightsListItems({ flights, classes, setSelectedFlightInfo }) {
+  const setInfo = flightInfo => {
+    setSelectedFlightInfo(flightInfo);
+  };
+
   return flights.map(
     ({
       id,
@@ -48,7 +51,7 @@ function FlightsListItems({ flights, classes }) {
             </div>
           </div>
           <div className="flights-list-item__price">
-            <Link to="/select_seats">
+            <Link to="/passenger_list">
               <Button type="button" className="card-buttons price">
                 $ {price}
               </Button>

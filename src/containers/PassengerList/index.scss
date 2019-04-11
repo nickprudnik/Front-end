@@ -1,0 +1,10 @@
+@import "src/variables.scss";
+
+.passenger_list_information {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: auto;
+  justify-content: space-between;
+  height: 350px;
+}

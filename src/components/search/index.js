@@ -89,7 +89,6 @@ class Search extends React.Component {
                   variant="outlined"
                 />
               </div>
-
               <Button
                 variant="contained"
                 color="primary"

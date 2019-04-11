@@ -8,7 +8,6 @@ import Rows from "./Rows";
 
 import "./index.scss";
 import UserContact from "../../components/UserContact/UserContact";
-
 import OrderDetails from "../../components/OrderList/OrderList";
 
 class PlaneSeats extends Component {

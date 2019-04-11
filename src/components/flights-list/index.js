@@ -11,6 +11,7 @@ import Search from "../search";
 
 import FlightsListItems from "./flights-list-items";
 import "./index.scss";
+import { setSelectedFlightInfo } from "../../redux/user/actions";
 
 import ticketsSearchSelector from "../../selectors/ticketsSearchSelector";
 
@@ -18,7 +19,8 @@ class FlightsList extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     userRequest: PropTypes.object.isRequired,
-    tickets: PropTypes.array.isRequired
+    tickets: PropTypes.array.isRequired,
+    setSelectedFlightInfo: PropTypes.func.isRequired
   };
 
   constructor(props) {
@@ -65,7 +67,15 @@ const mapStateToProps = state => ({
   tickets: ticketsSearchSelector(state)
 });
 
+const mapDispatchToProps = dispatch => ({
+  setSelectedFlightInfo: flightInfo =>
+    dispatch(setSelectedFlightInfo(flightInfo))
+});
+
 export default compose(
   withStyles(styles),
-  connect(mapStateToProps)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
 )(FlightsList);
