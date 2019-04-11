@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { Form } from "react-final-form";
@@ -10,7 +11,6 @@ import { setPassengersInfo } from "../../redux/user/actions";
 import "./index.scss";
 import Details from "./expandable-panel/details";
 import Header from "./expandable-panel/header";
-import { Link } from "@material-ui/core";
 
 class PassengersList extends Component {
   static propTypes = {
@@ -61,13 +61,16 @@ class PassengersList extends Component {
             <FieldArray name="information">
               {() =>
                 passengersAmount.map((elem, index) => (
-                  <div className="expandable-panel" key={index}>
-                    <Header index={index} />
-                    <Details index={index} />
+                  <div className="passenger_list_information">
+                    <div className="expandable-panel" key={index}>
+                      <Header index={index} />
+                      <Details index={index} />
+                    </div>
                   </div>
                 ))
               }
             </FieldArray>
+
             <Link to="/select_seats">
               <button type="submit" disabled={submitting || pristine}>
                 Confirm

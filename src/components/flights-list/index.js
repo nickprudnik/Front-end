@@ -94,6 +94,11 @@ const mapDispatchToProps = dispatch => ({
     dispatch(setSelectedFlightInfo(flightInfo))
 });
 
+const mapDispatchToProps = dispatch => ({
+  setSelectedFlightInfo: flightInfo =>
+    dispatch(setSelectedFlightInfo(flightInfo))
+});
+
 export default compose(
   withStyles(styles),
   connect(
