@@ -1,22 +1,28 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Field } from "react-final-form";
-import TextField from "../../../../components/text-field/index";
+import TextField from "../../../../components/text-field";
 import Luggage from "./luggage";
 import "./index.scss";
 
 export default function Details({ index }) {
+  const requiredArray = value =>
+    value && value.length > 0 ? undefined : "Required";
+
   return (
     <div className="expandable-panel-details">
       <div className="expandable-panel-details__names">
         <Field
-          name={"firstname" + index}
+          name={`firstname${index}`}
+          validate={requiredArray}
           label="First Name"
           component={TextField}
           type="text"
           margin="dense"
         />
         <Field
-          name={"lastname" + index}
+          name={`lastname${index}`}
+          validate={requiredArray}
           label="Last Name"
           component={TextField}
           type="text"
@@ -27,3 +33,7 @@ export default function Details({ index }) {
     </div>
   );
 }
+
+Details.propTypes = {
+  index: PropTypes.number.isRequired
+};

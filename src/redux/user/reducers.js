@@ -6,7 +6,8 @@ function userState() {
     request: {},
     selectedFlight: {},
     passengersInfo: [],
-    selectedPassenger: 0
+    selectedPassenger: 0,
+    totalPrice: 0
   };
 }
 
@@ -27,6 +28,12 @@ const user = handleActions(
     [actionTypes.USER_SELECTED_FLIGHT_INFO]: (state, action) => ({
       ...state,
       selectedFlight: action.flightInfo
+    }),
+    [actionTypes.USER_TOTAL_PRICE]: (state, action) => ({
+      ...state,
+      totalPrice: state.totalPrice
+        ? +state.totalPrice + +action.price
+        : +action.price
     })
   },
   userState()
