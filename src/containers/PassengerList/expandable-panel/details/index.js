@@ -28,6 +28,38 @@ export default function Details({ index }) {
           type="text"
           margin="dense"
         />
+        <Field
+          name={`email${index}`}
+          validate={requiredArray}
+          label="E-mail"
+          component={TextField}
+          type="text"
+          margin="dense"
+        />
+        <Field
+          name={`street${index}`}
+          validate={requiredArray}
+          label="Street"
+          component={TextField}
+          type="text"
+          margin="dense"
+        />
+        <Field
+          name={`city${index}`}
+          validate={requiredArray}
+          label="City"
+          component={TextField}
+          type="text"
+          margin="dense"
+        />
+        <Field
+          name={`passportscopy${index}`}
+          validate={requiredArray}
+          label="Passport's Scan"
+          component={TextField}
+          type="file"
+          margin="dense"
+        />
       </div>
       <Luggage index={index} />
     </div>

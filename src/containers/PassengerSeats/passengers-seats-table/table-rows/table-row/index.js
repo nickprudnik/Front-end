@@ -17,7 +17,6 @@ class TableRow extends React.Component {
   select = event => this.props.selectPassenger(+event.target.id);
 
   render() {
-    console.log(this.props);
     return (
       <tr className="passengers-seats__passenger">
         <td className="passengers-seats__info td">

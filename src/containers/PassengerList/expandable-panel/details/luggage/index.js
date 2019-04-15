@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./index.scss";
 import Checkbox from "@material-ui/core/Checkbox";
+import shortid from "shortid";
 
 export default function Luggage({ index }) {
   Luggage.propTypes = {
@@ -30,7 +31,7 @@ export default function Luggage({ index }) {
   return (
     <div className="luggage-list">
       {luggageTypes.map(({ kg, price }) => (
-        <label htmlFor={price} key={Math.random()}>
+        <label htmlFor={price} key={shortid.generate()}>
           <Checkbox id={price} name={"luggage" + index} value={price} /> {kg} kg
         </label>
       ))}

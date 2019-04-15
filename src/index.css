@@ -22,6 +22,7 @@ code {
 .MainElems {
   display: flex;
   flex-direction: column;
+  min-height: calc(100vh - 70px);
 }
 
 .container-reset {
@@ -67,8 +68,6 @@ code {
   height: 74px;
   flex: 0;
   justify-content: space-around;
-  position: fixed;
-  bottom: 0;
 }
 
 .carousel {
