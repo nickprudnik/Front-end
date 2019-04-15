@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import TableRow from "./table-row";
 import "./index.scss";
+import shortid from "shortid";
 
 function TableRows({ passengersInfo }) {
   TableRows.propTypes = {
@@ -11,14 +12,19 @@ function TableRows({ passengersInfo }) {
 
   return (
     <Fragment>
-      {passengersInfo.map(({ firstname, lastname }, index) => (
-        <TableRow
-          key={Math.random()}
-          firstname={firstname}
-          lastname={lastname}
-          index={index}
-        />
-      ))}
+      {passengersInfo.map(
+        ({ firstname, lastname, email, street, city }, index) => (
+          <TableRow
+            key={shortid.generate()}
+            firstname={firstname}
+            lastname={lastname}
+            email={email}
+            street={street}
+            city={city}
+            index={index}
+          />
+        )
+      )}
     </Fragment>
   );
 }

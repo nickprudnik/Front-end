@@ -14,7 +14,7 @@ class TableRow extends React.Component {
     passengersInfo: PropTypes.array.isRequired
   };
 
-  select = event => this.props.selectPassenger(+event.target.id);
+  selectPassenger = event => this.props.selectPassenger(+event.target.id);
 
   render() {
     return (
@@ -25,7 +25,7 @@ class TableRow extends React.Component {
         <td
           id={this.props.index}
           className="passengers-seats__seat td"
-          onClick={this.select}
+          onClick={this.selectPassenger}
         >
           {this.props.passengersInfo[this.props.index].selectedSeat || "seat"}
         </td>

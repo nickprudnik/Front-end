@@ -21,13 +21,6 @@ export function getPlaneLayout(layout) {
   };
 }
 
-export function setTotalPrice(price) {
-  return {
-    type: actionTypes.USER_TOTAL_PRICE,
-    price
-  };
-}
-
 export function setPassengersInfo(info) {
   return {
     type: actionTypes.PASSENGERS_INFO,

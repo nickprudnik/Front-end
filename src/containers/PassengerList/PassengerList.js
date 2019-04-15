@@ -29,13 +29,16 @@ class PassengersList extends Component {
     }
 
     const passengersArray = [];
-    const passAmount = sortablePassengers.length / 3;
+    const passAmount = sortablePassengers.length / 6;
 
     for (let i = 0; i < passAmount; i++) {
       const obj = {
-        firstname: sortablePassengers[i],
-        lastname: sortablePassengers[i + passAmount],
-        luggagePrice: sortablePassengers[i + passAmount * 2]
+        firstname: sortablePassengers[i + passAmount * 2],
+        lastname: sortablePassengers[i + passAmount * 3],
+        email: sortablePassengers[i + passAmount * 1],
+        street: sortablePassengers[i + passAmount * 5],
+        city: sortablePassengers[i * passAmount * 6],
+        passportscopy: sortablePassengers[i + passAmount * 4]
       };
       passengersArray.push(obj);
     }

@@ -3,24 +3,20 @@ import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { planeFetchData } from "../../redux/search/planeShema/actions";
+import { setPassengersInfo } from "../../redux/user/actions";
 
 import Rows from "./Rows";
 
 import "./index.scss";
-import UserContact from "../../components/UserContact/UserContact";
 import OrderDetails from "../../components/OrderList/OrderList";
+import EnableSeats from "./EnableSeats";
 
 class PlaneSeats extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      bookedSeats: []
-    };
-  }
-
   static propTypes = {
     planeFetchData: PropTypes.func.isRequired,
-    plane: PropTypes.array.isRequired
+    plane: PropTypes.array.isRequired,
+    passengersInfo: PropTypes.array.isRequired,
+    setInfo: PropTypes.func.isRequired
   };
 
   componentDidMount() {
@@ -28,9 +24,16 @@ class PlaneSeats extends Component {
   }
 
   bookSeat = e => {
-    this.setState({
-      bookedSeats: [...this.state.bookedSeats, e.target.id]
+    const { id } = e.target;
+
+    const newInfo = passengersInfo.map((passenger, index) => {
+      if (index === selectedPassenger) {
+        return { ...passenger, selectedSeat: id };
+      }
+      return passenger;
     });
+
+    setInfo(newInfo);
   };
 
   render() {
@@ -60,10 +63,10 @@ class PlaneSeats extends Component {
               </div>
               <div className="exit exit--front fuselage" />
             </div>
+            <EnableSeats />
           </div>
           <div className="tickets_info">
             <OrderDetails bookedSeats={this.state.bookedSeats} />
-            <UserContact className="user_contacts" />
           </div>
         </div>
       </Fragment>
@@ -74,11 +77,14 @@ class PlaneSeats extends Component {
 const mapStateToProps = state => ({
   plane: state.searchPage.plane.items,
   planeHasErrored: state.searchPage.plane.hasErrored,
-  planeIsLoading: state.searchPage.plane.isLoading
+  planeIsLoading: state.searchPage.plane.isLoading,
+  passengersInfo: state.user.passengersInfo,
+  selectedPassenger: state.user.selectedPassenger
 });
 
 const mapDispatchToProps = dispatch => ({
-  planeFetchData: values => dispatch(planeFetchData(values))
+  planeFetchData: values => dispatch(planeFetchData(values)),
+  setInfo: info => dispatch(setPassengersInfo(info))
 });
 
 export default withRouter(
