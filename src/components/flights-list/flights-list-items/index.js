@@ -1,5 +1,4 @@
 import React from "react";
-
 import "./index.scss";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
@@ -9,7 +8,11 @@ import Typography from "@material-ui/core/Typography";
 import FlightTakeoffIcon from "@material-ui/icons/FlightTakeoff";
 import FlightLandIcon from "@material-ui/icons/FlightLand";
 
-function FlightsListItems({ flights, classes }) {
+function FlightsListItems({ flights, classes, setSelectedFlightInfo }) {
+  const setInfo = flightInfo => {
+    setSelectedFlightInfo(flightInfo);
+  };
+
   return flights.map(
     ({
       id,
@@ -23,14 +26,15 @@ function FlightsListItems({ flights, classes }) {
       adult
     }) => (
       <div key={id} className="flights-list-item">
-        <div className="full_flight_info">
-          <Typography variant="h6" color="inherit">
-            {fromCountry} to {toCountry}
+        <div className="flights-list-item__info">
+          <Typography variant="subtitle1" gutterBottom>
+            {date}
           </Typography>
-          <Typography color="inherit">
-            Departure {moment(dateFrom).format("LL")},{" "}
-            {dateTo && `return ${moment(dateTo).format("LL")}`},{" "}
-            {adult && adult !== "0" && `adult ${adult}`}{" "}
+          <Typography variant="h4" gutterBottom>
+            {startTime}
+            <FlightTakeoffIcon className={classes.icon} fontSize="large" />
+            <FlightLandIcon className={classes.icon} fontSize="large" />
+            {endTime}
           </Typography>
         </div>
         <div className="info_price">
@@ -40,7 +44,6 @@ function FlightsListItems({ flights, classes }) {
                 <FlightTakeoffIcon className={classes.icon} fontSize="large" />
                 <span className="flight__time">{startTime}</span>
               </div>
-              <div className="arrow_svg" />
               <FaPlane className="fa-arrow" />
               <div className="flight">
                 <FlightLandIcon className={classes.icon} fontSize="large" />
@@ -49,16 +52,29 @@ function FlightsListItems({ flights, classes }) {
             </div>
           </div>
           <div className="flights-list-item__price">
-            <Link to="/select_seats">
-              <Button type="button" className="card-buttons price">
+            <Link to="/passenger_list">
+              <Button
+                type="button"
+                className="card-buttons price"
+                onClickShowTickets={() =>
+                  setInfo(price, {
+                    id,
+                    dateFrom,
+                    dateTo,
+                    startTime,
+                    endTime,
+                    price
+                  })
+                }
+              >
                 $ {price}
               </Button>
             </Link>
           </div>
         </div>
       </div>
-    )
-  );
+    ))
+  
 }
 
 export default FlightsListItems;

@@ -7,7 +7,7 @@ import {
 
 function getInitialState() {
   return {
-    hasErrored: false,
+    isFailed: false,
     isLoading: false,
     items: []
   };
@@ -17,7 +17,7 @@ const news = handleActions(
   {
     [NEWS_HAS_ERRORED]: (state, action) => ({
       ...state,
-      hasErrores: action.hasErrored
+      isFailed: action.isFailed
     }),
     [NEWS_IS_LOADING]: (state, action) => ({
       ...state,

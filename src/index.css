@@ -20,12 +20,15 @@ code {
 }
 
 .MainElems {
+  display: flex;
+  flex-direction: column;
   min-height: calc(100vh - 70px);
 }
 
 .container-reset {
   margin-top: 50px;
   width: 700px;
+  margin: auto;
 }
 
 .reset-headline {
@@ -33,13 +36,8 @@ code {
 }
 
 .container-signin {
-  margin: auto;
-  width: 600px;
-}
-
-.container-signup {
-  margin: auto;
-  width: 600px;
+  margin-top: 50px; 
+  width: 700px;
 }
 
 .signin_headline {
@@ -56,7 +54,6 @@ code {
 }
 
 .footer {
-  display: flex;
   text-align: center;
   width: 100%;
   background-color: #143248;
@@ -64,7 +61,6 @@ code {
   padding-top: 20px;
   height: 74px;
   flex: 0;
-  justify-content: space-around;
 }
 
 .carousel {
@@ -75,17 +71,13 @@ code {
   height: 870px;
 }
 
-.carousel-cards {
-  margin: 0 120px 0 120px;
-}
-
 .carousel-item-cards {
-  width: "18rem";
+  width: '18rem';
   height: 400px;
 }
 
 .bscard-group {
-  padding: 30px;
+  padding:30px;
   padding: 0;
   margin: 0;
 }
@@ -110,10 +102,10 @@ code {
 
 .card-body {
   width: 100%;
-  transition: 0.25s ease;
+  transition: .25s ease;
   bottom: 40px;
   position: absolute;
-  background: #cbdeeb9f;
+  background:#cbdeeb9f;
   bottom: -58px;
 }
 
@@ -122,7 +114,7 @@ code {
 }
 
 .card-headline {
-  margin: 0 0 0 30px;
+  margin: 20px 0 0 30px;
 }
 
 .card-title {
@@ -178,4 +170,11 @@ code {
 
 .select-gender {
   margin-bottom: 15px;
+}
+
+.sign_up_container {
+  background-image: url("./containers/images/new-york.jpg");
+  background-size: 100%;
+  width: 100%;
+  height: 87vh;
 }

@@ -14,7 +14,6 @@
     "final-form-arrays": "^1.1.2",
     "final-form-material-ui": "^0.3.0",
     "flag-icon-css": "^3.3.0",
-    "google-maps-react": "^2.0.2",
     "keymirror": "^0.1.1",
     "material-ui-pickers": "^2.2.4",
     "mdbreact": "^4.11.0",
@@ -23,11 +22,18 @@
     "react": "^16.8.2",
     "react-autocomplete": "^1.8.1",
     "react-bootstrap": "^1.0.0-beta.5",
-    "react-chat-widget": "^2.1.4-1",
     "react-dom": "^16.8.2",
     "react-final-form": "^4.1.0",
-    "react-final-form-arrays": "^2.0.2",
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> order-list
+    "react-final-form-arrays": "^2.0.3",
     "react-icons": "^3.5.0",
+    "react-modal": "^3.8.1",
+=======
+    "react-final-form-arrays": "^2.0.2",
+>>>>>>> origin/revert-27-order-list
     "react-redux": "^6.0.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
@@ -37,7 +43,8 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
-    "sass": "^1.17.3"
+    "sass": "^1.17.3",
+    "shortid": "^2.2.14"
   },
   "scripts": {
     "start": "react-scripts start",
