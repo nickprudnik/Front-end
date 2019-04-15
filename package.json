@@ -43,7 +43,8 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
-    "sass": "^1.17.3"
+    "sass": "^1.17.3",
+    "shortid": "^2.2.14"
   },
   "scripts": {
     "start": "react-scripts start",

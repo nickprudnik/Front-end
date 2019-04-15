@@ -20,12 +20,15 @@ code {
 }
 
 .MainElems {
+  display: flex;
+  flex-direction: column;
   min-height: calc(100vh - 70px);
 }
 
 .container-reset {
   margin-top: 50px;
   width: 700px;
+  margin: auto;
 }
 
 .reset-headline {
@@ -119,4 +122,59 @@ code {
   font-size: 16px;
   text-transform: uppercase;
   color: #2b43cc;
+}
+
+.adress {
+  order: 0;
+}
+
+.svgImage {
+  order: 1;
+}
+
+.copyright {
+  order: 2;
+}
+
+.rcw-launcher {
+  background-color: #3f51b5 !important;
+}
+
+.rcw-conversation-container .rcw-header {
+  background-color: #3f51b5 !important;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  width: 5% !important;
+}
+
+.table-responsive {
+  padding: 0 30px 0 30px;
+  margin: 0 auto;
+  width: 60% !important;
+}
+
+.card-img-top {
+  height: 100%;
+}
+
+.flights-list__header {
+  margin: 40px 0 0;
+  width: 35%;
+}
+
+.emodji {
+  font-size: 40px;
+}
+
+.select-gender {
+  margin-bottom: 15px;
+}
+
+.sign_up_container {
+  background-image: url("./containers/images/new-york.jpg");
+  background-size: 100%;
+  width: 100%;
+  height: 87vh;
 }

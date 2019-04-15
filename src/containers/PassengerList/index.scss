@@ -1,10 +1,27 @@
 @import "src/variables.scss";
 
-.passenger_list_information {
+.passengers-list-form {
   display: flex;
   flex-direction: column;
-  width: 60%;
-  margin: auto;
-  justify-content: space-between;
-  height: 350px;
+  align-items: center;
+}
+
+.expandable-panel {
+  width: 55%;
+  margin: 0 auto;
+  border: 1px solid $borderColor;
+  box-shadow: $boxShadow;
+  border-bottom: 2px solid $passengersListBorderColor;
+}
+
+@media screen and (max-width: $tabletSize) {
+  .expandable-panel {
+    width: 85%;
+  }
+}
+
+@media screen and (max-width: $mobileSize) {
+  .expandable-panel {
+    width: 85%;
+  }
 }

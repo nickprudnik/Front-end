@@ -12,10 +12,11 @@ import { airportsFetchData } from '../../redux/search/airports/actions';
 import { ticketsFetchData } from '../../redux/search/tickets/actions';
 import styles from './material.style';
 
-import DatePicker from '../date-picker/index';
-import SimpleSelect from '../select';
-import TextField from '../text-field';
-import './index.scss';
+import validate from "./validate";
+import DatePicker from "../date-picker/index";
+import SimpleSelect from "../select";
+import TextField from "../text-field";
+import "./index.scss";
 
 class Search extends React.Component {
   static propTypes = {
@@ -27,7 +28,7 @@ class Search extends React.Component {
   };
 
   componentDidMount() {
-    return this.props.airports.length || this.props.airportsFetchData('/airports');
+    this.props.airportsFetchData();
   }
 
   handleSubmit = async values => {
@@ -42,6 +43,7 @@ class Search extends React.Component {
       <div className="search-form-container">
         <Form
           onSubmit={this.handleSubmit}
+          validate={validate}
           render={({ handleSubmit }) => (
             <form className="search-form" onSubmit={handleSubmit}>
               <Field

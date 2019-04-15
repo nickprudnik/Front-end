@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { Form } from "react-final-form";
@@ -19,12 +18,9 @@ class PassengersList extends Component {
   };
 
   onSubmit = values => {
-    const passengers = {};
-    Object.keys(values)
+    const passengers = Object.keys(values)
       .sort()
-      .forEach(function(key) {
-        passengers[key] = values[key];
-      });
+      .map(key => values[key]);
 
     const sortablePassengers = [];
 
@@ -38,12 +34,15 @@ class PassengersList extends Component {
     for (let i = 0; i < passAmount; i++) {
       const obj = {
         firstname: sortablePassengers[i],
-        lastname: sortablePassengers[i + passAmount]
+        lastname: sortablePassengers[i + passAmount],
+        luggagePrice: sortablePassengers[i + passAmount * 2]
       };
       passengersArray.push(obj);
     }
+    const history = this.props.history;
     this.props.setPassengersInfo(values);
     this.props.setPassengersInfo(passengersArray);
+    return history.push("/select_seats");
   };
 
   render() {
@@ -61,21 +60,16 @@ class PassengersList extends Component {
             <FieldArray name="information">
               {() =>
                 passengersAmount.map((elem, index) => (
-                  <div className="passenger_list_information">
-                    <div className="expandable-panel" key={index}>
-                      <Header index={index} />
-                      <Details index={index} />
-                    </div>
+                  <div className="expandable-panel" key={index}>
+                    <Header index={index} />
+                    <Details index={index} />
                   </div>
                 ))
               }
             </FieldArray>
-
-            <Link to="/select_seats">
-              <button type="submit" disabled={submitting || pristine}>
-                Confirm
-              </button>
-            </Link>
+            <button type="submit" disabled={submitting || pristine}>
+              Confirm
+            </button>
           </form>
         )}
       />

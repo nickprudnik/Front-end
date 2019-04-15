@@ -14,6 +14,20 @@ export function setSelectedFlightInfo(flightInfo) {
   };
 }
 
+export function getPlaneLayout(layout) {
+  return {
+    type: actionTypes.PLANE_LAYOUT,
+    layout
+  };
+}
+
+export function setTotalPrice(price) {
+  return {
+    type: actionTypes.USER_TOTAL_PRICE,
+    price
+  };
+}
+
 export function setPassengersInfo(info) {
   return {
     type: actionTypes.PASSENGERS_INFO,

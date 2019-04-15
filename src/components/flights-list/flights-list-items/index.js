@@ -56,9 +56,11 @@ function FlightsListItems({ flights, classes, setSelectedFlightInfo }) {
               <Button
                 type="button"
                 className="card-buttons price"
-                onClick={() =>
+                onClickShowTickets={() =>
                   setInfo(price, {
                     id,
+                    dateFrom,
+                    dateTo,
                     startTime,
                     endTime,
                     price
