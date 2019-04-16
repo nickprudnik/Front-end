@@ -16,7 +16,6 @@ class OrderDetails extends React.Component {
 
   render() {
     const { tickets } = this.props;
-    const { bookedSeats } = this.props;
 
     return (
       <section className="order-details">
@@ -40,7 +39,8 @@ class OrderDetails extends React.Component {
               dateFrom,
               dateTo,
               fromCountry,
-              toCountry
+              toCountry,
+              adult
             }) => (
               <div key={id}>
                 <div className="flight-info">
@@ -58,14 +58,11 @@ class OrderDetails extends React.Component {
                       {startTime} - {endTime}
                     </span>
                   </div>
-                  <div className="select_seats">
-                    {bookedSeats.map(res => (
-                      <span className="flight-info_seats">{res}</span>
-                    ))}
-                  </div>
                 </div>
                 <div className="about-price">
-                  <span className="about-price__text">{1} x Flight ticket</span>
+                  <span className="about-price__text">
+                    {adult} x Flight ticket
+                  </span>
                   <span className="about-price__amount">$ {price}</span>
                 </div>
               </div>

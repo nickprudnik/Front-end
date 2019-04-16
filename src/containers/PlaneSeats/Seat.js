@@ -1,29 +1,46 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { compose } from "redux";
+import PropTypes from "prop-types";
+import { selectPassenger } from "../../redux/user/actions";
 
 class Seat extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isBooked: false
-    };
-  }
-
-  bookSeat = () => {
-    this.setState({ isBooked: !this.state.isBooked });
+  static propTypes = {
+    selectPassenger: PropTypes.func.isRequired,
+    passengersInfo: PropTypes.array.isRequired
   };
 
-  render() {
+  checkIsReserved = () => {
+    const IsReserved = this.props.passengersInfo.some(
+      passengersInfo => passengersInfo.selectedSeat == this.props.id
+    );
+
     return (
       <div
-        onClick={this.bookSeat}
-        className={this.state.isBooked ? "label-reserved" : "label"}
+        className={IsReserved ? "label-reserved" : "label"}
         id={this.props.id}
       >
         {this.props.id}
       </div>
     );
+  };
+
+  render() {
+    return <React.Fragment>{this.checkIsReserved()}</React.Fragment>;
   }
 }
 
-export default Seat;
+const mapStateToProps = state => ({
+  passengersInfo: state.user.passengersInfo
+});
+
+const mapDispatchToProps = dispatch => ({
+  selectPassenger: id => dispatch(selectPassenger(id))
+});
+
+export default compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
+)(Seat);

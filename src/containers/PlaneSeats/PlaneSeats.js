@@ -26,14 +26,14 @@ class PlaneSeats extends Component {
   bookSeat = e => {
     const { id } = e.target;
 
-    const newInfo = passengersInfo.map((passenger, index) => {
-      if (index === selectedPassenger) {
+    const newInfo = this.props.passengersInfo.map((passenger, index) => {
+      if (index === this.props.selectedPassenger) {
         return { ...passenger, selectedSeat: id };
       }
       return passenger;
     });
 
-    setInfo(newInfo);
+    this.props.setInfo(newInfo);
   };
 
   render() {
@@ -66,7 +66,7 @@ class PlaneSeats extends Component {
             <EnableSeats />
           </div>
           <div className="tickets_info">
-            <OrderDetails bookedSeats={this.state.bookedSeats} />
+            <OrderDetails />
           </div>
         </div>
       </Fragment>

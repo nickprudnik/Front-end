@@ -165,8 +165,10 @@ html {
 .tickets_info {
   flex-grow: 1;
   background-color: #cbdeeb;
-  opacity: 0.9;
   padding-top: 20px;
+  position: fixed;
+  right: 0;
+  width: 40%;
 }
 
 .availabel {
