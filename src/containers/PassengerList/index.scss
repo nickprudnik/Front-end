@@ -25,3 +25,14 @@
     width: 85%;
   }
 }
+
+.passenger_list_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-buttons.price {
+  width: 200px;
+  margin-top: 40px;
+}

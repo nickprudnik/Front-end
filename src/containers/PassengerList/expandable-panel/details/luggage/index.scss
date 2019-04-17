@@ -1,7 +1,6 @@
-@import 'src/variables';
+@import "src/variables";
 
 .luggage-list {
-  
   background-color: $cardBackgroundColor;
   &__item {
     display: flex;
@@ -26,4 +25,19 @@
     font-weight: 400;
     font-family: $fontFamily;
   }
+}
+
+.backpack {
+  width: 35px;
+  height: auto;
+}
+
+.suitcase {
+  width: 40px;
+  height: auto;
+}
+
+.bag {
+  width: 60px;
+  height: auto;
 }

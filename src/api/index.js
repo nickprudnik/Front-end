@@ -32,3 +32,7 @@ export const getBestDeals = () => {
 export const getPlainShema = () => {
   return axios.get(`${API_URL}/planeShemes`);
 };
+
+export const getLuggage = () => {
+  return axios.get(`${API_URL}/luggage`);
+};

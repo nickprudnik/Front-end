@@ -1,40 +1,45 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import "./index.scss";
 import Checkbox from "@material-ui/core/Checkbox";
 import shortid from "shortid";
+import { luggageFetchData } from "../../../../../redux/search/luggage/actions";
 
-export default function Luggage({ index }) {
-  Luggage.propTypes = {
-    index: PropTypes.number.isRequired
+class Luggage extends React.Component {
+  static propTypes = {
+    luggage: PropTypes.array.isRequired,
+    luggageFetchData: PropTypes.func.isRequired
   };
 
-  const luggageTypes = [
-    {
-      kg: "10",
-      price: "9"
-    },
-    {
-      kg: "20",
-      price: "15"
-    },
-    {
-      kg: "30",
-      price: "21"
-    },
-    {
-      kg: "free carry-on bag",
-      price: "0"
-    }
-  ];
+  componentDidMount() {
+    this.props.luggageFetchData("/luggage");
+  }
 
-  return (
-    <div className="luggage-list">
-      {luggageTypes.map(({ kg, price }) => (
-        <label htmlFor={price} key={shortid.generate()}>
-          <Checkbox id={price} name={"luggage" + index} value={price} /> {kg} kg
-        </label>
-      ))}
-    </div>
-  );
+  render() {
+    const { luggage } = this.props;
+    return (
+      <div className="luggage-list">
+        {luggage.map(({ kg, price, styleclass, image }) => (
+          <label htmlFor={price} key={shortid.generate()}>
+            <Checkbox id={price} name={"luggage"} value={price} /> {kg} kg{" "}
+            <img className={styleclass} src={image} />
+          </label>
+        ))}
+      </div>
+    );
+  }
 }
+
+const mapStateToProps = state => ({
+  luggage: state.searchPage.luggage.items
+});
+
+const mapDispatchToProps = dispatch => ({
+  luggageFetchData: values => dispatch(luggageFetchData(values))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Luggage);

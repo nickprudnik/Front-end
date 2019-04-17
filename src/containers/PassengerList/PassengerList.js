@@ -3,6 +3,7 @@ import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { Form } from "react-final-form";
+import Button from "react-bootstrap/Button";
 import arrayMutators from "final-form-arrays";
 import { FieldArray } from "react-final-form-arrays";
 import PropTypes from "prop-types";
@@ -60,19 +61,25 @@ class PassengersList extends Component {
         }}
         render={({ handleSubmit }, pristine, submitting) => (
           <form onSubmit={handleSubmit}>
-            <FieldArray name="information">
-              {() =>
-                passengersAmount.map((elem, index) => (
-                  <div className="expandable-panel" key={index}>
-                    <Header index={index} />
-                    <Details index={index} />
-                  </div>
-                ))
-              }
-            </FieldArray>
-            <button type="submit" disabled={submitting || pristine}>
-              Confirm
-            </button>
+            <div className="passenger_list_form">
+              <FieldArray name="information">
+                {() =>
+                  passengersAmount.map((elem, index) => (
+                    <div className="expandable-panel" key={index}>
+                      <Header index={index} />
+                      <Details index={index} />
+                    </div>
+                  ))
+                }
+              </FieldArray>
+              <Button
+                className="card-buttons price"
+                type="submit"
+                disabled={submitting || pristine}
+              >
+                Confirm
+              </Button>
+            </div>
           </form>
         )}
       />
