@@ -36,3 +36,7 @@ export const getPlainShema = () => {
 export const getLuggage = () => {
   return axios.get(`${API_URL}/luggage`);
 };
+
+export const getOrders = () => {
+  return axios.get(`${API_URL}/history_order`);
+};

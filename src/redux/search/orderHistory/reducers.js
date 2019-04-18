@@ -1,8 +1,8 @@
 import { handleActions } from "redux-actions";
 import {
-  BESTDEALS_IS_LOADING,
-  BESTDEALS_HAS_ERRORED,
-  BESTDEALS_FETCH_DATA_SUCCES
+  ORDER_IS_LOADING,
+  ORDER_HAS_ERRORED,
+  ORDER_FETCH_DATA_SUCCESS
 } from "../actionTypes";
 
 function getInitialState() {
@@ -13,17 +13,17 @@ function getInitialState() {
   };
 }
 
-const bestdeals = handleActions(
+const order = handleActions(
   {
-    [BESTDEALS_HAS_ERRORED]: (state, action) => ({
+    [ORDER_HAS_ERRORED]: (state, action) => ({
       ...state,
-      isFailed: action.hasErrored
+      isFailed: action.isFailed
     }),
-    [BESTDEALS_IS_LOADING]: (state, action) => ({
+    [ORDER_IS_LOADING]: (state, action) => ({
       ...state,
       isLoading: action.isLoading
     }),
-    [BESTDEALS_FETCH_DATA_SUCCES]: (state, action) => ({
+    [ORDER_FETCH_DATA_SUCCESS]: (state, action) => ({
       ...state,
       items: action.items
     })
@@ -31,4 +31,4 @@ const bestdeals = handleActions(
   getInitialState()
 );
 
-export default bestdeals;
+export default order;

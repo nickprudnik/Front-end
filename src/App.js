@@ -15,6 +15,7 @@ import Reset from "./containers/Reset";
 import Footer from "./components/Footer";
 import PlaneSeats from "./containers/PlaneSeats/PlaneSeats";
 import PassengersList from "./containers/PassengerList/PassengerList";
+import OrderHistory from "./containers/OrderHistory/OrderHistory";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -33,6 +34,7 @@ class App extends Component {
             <Route exact path="/reset_pass" component={Reset} />
             <Route exact path="/select_seats" component={PlaneSeats} />
             <Route exact path="/passenger_list" component={PassengersList} />
+            <Route exact path="/orders_history" component={OrderHistory} />
           </div>
         </Router>
         <Footer />

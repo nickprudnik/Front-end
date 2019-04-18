@@ -5,6 +5,7 @@ import bestDeals from "./bestDeals/reducers";
 import news from "./news/reducers";
 import plane from "./planeShema/reducers";
 import luggage from "./luggage/reducers";
+import order from "./orderHistory/reducers";
 
 export default combineReducers({
   tickets,
@@ -12,5 +13,6 @@ export default combineReducers({
   bestDeals,
   news,
   plane,
-  luggage
+  luggage,
+  order
 });
