@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { loginUser } from "../actions/authentication";
 import classnames from "classnames";
+import PropTypes from "prop-types";
 
 import "../index.css";
 
@@ -30,6 +31,18 @@ class SignIn extends Component {
       password: this.state.password
     };
     this.props.loginUser(user);
+  }
+
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/");
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push("/");
+    }
   }
 
   render() {
@@ -79,6 +92,10 @@ class SignIn extends Component {
   }
 }
 
+SignIn.propTypes = {
+  auth: PropTypes.object.isRequired
+};
+
 const mapDispatchToProps = {
   loginUser
 };
@@ -86,7 +103,8 @@ const mapDispatchToProps = {
 const mapStateToProps = state => ({
   userData: state.userData.userData,
   errors: state.userData.error,
-  isLogged: state.isLogged
+  isLogged: state.isLogged,
+  auth: state.auth
 });
 
 export default connect(

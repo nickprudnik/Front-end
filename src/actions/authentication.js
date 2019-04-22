@@ -2,11 +2,14 @@ import {
   SIGN_UP_SUCCESS,
   SIGN_IN_SUCCESS,
   RESET_PASS_SUCCESS,
+  SET_CURRENT_USER,
   AUTHENTICATION_HAS_ERRORED
 } from "./types";
 import { signUp, signIn, resetPass } from "../api/index";
 import { history } from "../App";
 import { HOME, SIGN_IN } from "../constants/index";
+import setAuthToken from "../setAuthToken";
+import jwt_decode from "jwt-decode";
 
 export const registerUser = user => dispatch => {
   signUp(user)
@@ -35,7 +38,11 @@ export const registerUserSuccess = data => {
 export const loginUser = user => dispatch => {
   signIn(user)
     .then(res => {
-      dispatch(loginUserSuccess(res));
+      const { token } = res.data;
+      localStorage.setItem("jwtToken", token);
+      setAuthToken(token);
+      const decoded = jwt_decode(token);
+      dispatch(setCurrentUser(decoded));
       history.push(HOME);
     })
     .catch(err => {
@@ -54,6 +61,20 @@ export const loginUserSuccess = data => {
       password: data.password
     }
   };
+};
+
+export const setCurrentUser = decoded => {
+  return {
+    type: SET_CURRENT_USER,
+    payload: decoded
+  };
+};
+
+export const logoutUser = history => dispatch => {
+  localStorage.removeItem("jwtToken");
+  setAuthToken(false);
+  dispatch(setCurrentUser({}));
+  history.push(SIGN_IN);
 };
 
 export const resetPassword = ({ email, password }) => {

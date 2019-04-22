@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { registerUser } from "../actions/authentication";
 import classnames from "classnames";
+import PropTypes from "prop-types";
 
 import "../index.css";
 
@@ -13,7 +14,8 @@ class SignUp extends Component {
       name: "",
       email: "",
       password: "",
-      password_confirm: ""
+      password_confirm: "",
+      errors: {}
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,6 +36,23 @@ class SignUp extends Component {
       password_confirm: this.state.password_confirm
     };
     this.props.registerUser(user, this.props.history);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push("/");
+    }
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors
+      });
+    }
+  }
+
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/");
+    }
   }
 
   render() {
@@ -113,13 +132,18 @@ class SignUp extends Component {
   }
 }
 
+SignUp.propTypes = {
+  auth: PropTypes.object.isRequired
+};
+
 const mapDispatchToProps = {
   registerUser
 };
 
 const mapStateToProps = state => ({
   userData: state.userData.userData,
-  errors: state.userData.error
+  errors: state.userData.error,
+  auth: state.auth
 });
 
 export default connect(

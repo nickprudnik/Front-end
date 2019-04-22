@@ -3,6 +3,10 @@ import { Router, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import { createBrowserHistory } from "history";
+import jwt_decode from "jwt-decode";
+import setAuthToken from "./setAuthToken";
+import * as routes from "./constants";
+import { logoutUser, setCurrentUser } from "./actions/authentication";
 
 import "./reset.scss";
 import "./index.scss";
@@ -18,6 +22,18 @@ import PassengersList from "./containers/PassengerList/PassengerList";
 import OrderHistory from "./containers/OrderHistory/OrderHistory";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+
+if (localStorage.jwtToken) {
+  setAuthToken(localStorage.jwtToken);
+  const decoded = jwt_decode(localStorage.jwtToken);
+  store.dispatch(setCurrentUser(decoded));
+
+  const currentTime = Date.now() / 1000;
+  if (decoded.exp < currentTime) {
+    store.dispatch(logoutUser());
+    window.location.href = routes.SIGN_IN;
+  }
+}
 
 export const history = createBrowserHistory();
 
