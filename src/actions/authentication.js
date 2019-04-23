@@ -7,15 +7,15 @@ import {
 } from "./types";
 import { signUp, signIn, resetPass } from "../api/index";
 import { history } from "../App";
-import { HOME, SIGN_IN } from "../constants/index";
 import setAuthToken from "../setAuthToken";
 import jwt_decode from "jwt-decode";
+import * as routes from "../constants";
 
 export const registerUser = user => dispatch => {
   signUp(user)
     .then(res => {
       dispatch(registerUserSuccess(res));
-      history.push(HOME);
+      history.push(routes.HOME);
     })
     .catch(err => {
       dispatch({
@@ -43,12 +43,11 @@ export const loginUser = user => dispatch => {
       setAuthToken(token);
       const decoded = jwt_decode(token);
       dispatch(setCurrentUser(decoded));
-      history.push(HOME);
     })
     .catch(err => {
       dispatch({
         type: AUTHENTICATION_HAS_ERRORED,
-        payload: err.response.data
+        payload: err.response
       });
     });
 };
@@ -74,7 +73,7 @@ export const logoutUser = history => dispatch => {
   localStorage.removeItem("jwtToken");
   setAuthToken(false);
   dispatch(setCurrentUser({}));
-  history.push(SIGN_IN);
+  history.push(routes.SIGN_IN);
 };
 
 export const resetPassword = ({ email, password }) => {
@@ -82,7 +81,7 @@ export const resetPassword = ({ email, password }) => {
     return resetPass({ email, password })
       .then(res => {
         dispatch(resetPasswordSuccess(res));
-        history.push(SIGN_IN);
+        history.push(routes.SIGN_IN);
       })
       .catch(error => {
         throw error;

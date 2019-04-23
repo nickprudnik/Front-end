@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import { registerUser } from "../actions/authentication";
 import classnames from "classnames";
 import PropTypes from "prop-types";
+import * as routes from "../constants";
 
 import "../index.css";
 
@@ -40,7 +41,7 @@ class SignUp extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push("/");
+      this.props.history.push(routes.HOME);
     }
     if (nextProps.errors) {
       this.setState({
@@ -51,7 +52,7 @@ class SignUp extends Component {
 
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/");
+      this.props.history.push(routes.HOME);
     }
   }
 
