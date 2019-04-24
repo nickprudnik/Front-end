@@ -3,6 +3,7 @@ import {
   SIGN_IN_SUCCESS,
   RESET_PASS_SUCCESS,
   SET_CURRENT_USER,
+  REGISTRATION_HAS_ERRORED,
   AUTHENTICATION_HAS_ERRORED
 } from "./types";
 import { signUp, signIn, resetPass } from "../api/index";
@@ -38,15 +39,15 @@ export const registerUserSuccess = data => {
 export const loginUser = user => dispatch => {
   signIn(user)
     .then(res => {
-      const { token } = res.data;
+      const token = res.data;
       localStorage.setItem("jwtToken", token);
       setAuthToken(token);
-      const decoded = jwt_decode(token);
+      const decoded = jwt_decode(token, { header: true });
       dispatch(setCurrentUser(decoded));
     })
     .catch(err => {
       dispatch({
-        type: AUTHENTICATION_HAS_ERRORED,
+        type: REGISTRATION_HAS_ERRORED,
         payload: err.response
       });
     });
