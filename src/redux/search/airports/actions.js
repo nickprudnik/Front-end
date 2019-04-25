@@ -14,15 +14,21 @@ export function isFailed(bool) {
 export function fetchDataSuccess(items) {
   return {
     type: AIRPORT_FETCH_DATA_SUCCESS,
-    items
+    items: items
   };
 }
 
-export function airportsFetchData() {
-  return dispatch => {
-    getAirports()
-      .then(res => res.data.airports)
-      .then(airports => dispatch(fetchDataSuccess(airports)))
-      .catch(() => dispatch(isFailed(true)));
-  };
-}
+// export function airportsFetchData() {
+//   return dispatch => {
+//     getAirports()
+//       .then(res => res.data.airports)
+//       .then(airports => dispatch(fetchDataSuccess(airports)))
+//       .catch(() => dispatch(isFailed(true)));
+//   };
+// }
+
+export const airportsFetchData = () => dispatch => {
+  getAirports()
+    .then(airports => dispatch(fetchDataSuccess(airports.data)))
+    .catch(() => dispatch(isFailed(true)));
+};

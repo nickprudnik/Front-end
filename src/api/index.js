@@ -18,7 +18,7 @@ export const getNews = () => {
 };
 
 export const getAirports = () => {
-  return axios.get(`${API_URL}/airports`);
+  return axios.get(`${API_URL}/avia/get_airports`);
 };
 
 export const getTickets = () => {

@@ -6,7 +6,7 @@ import {
 
 function getInitialState() {
   return {
-    items: [],
+    items: null,
     isFailed: false
   };
 }

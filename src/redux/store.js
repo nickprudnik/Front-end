@@ -1,14 +1,18 @@
-import { createStore, applyMiddleware} from 'redux';
-import thunk from 'redux-thunk';
-import rootReducer from './reducers';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import rootReducer from "./reducers";
+import { composeWithDevTools } from "redux-devtools-extension";
 
 const inititalState = {};
 
 const store = createStore(
-        rootReducer, 
-        inititalState, 
-        composeWithDevTools(applyMiddleware(thunk))
-)
+  rootReducer,
+  inititalState,
+  composeWithDevTools(applyMiddleware(thunk))
+);
+
+store.subscribe(() => {
+  console.log("subscribe", store.getState());
+});
 
 export default store;
