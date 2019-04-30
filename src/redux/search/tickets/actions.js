@@ -23,7 +23,7 @@ export function isLoading(loading) {
 export function fetchDataSuccess(items) {
   return {
     type: TICKETS_FETCH_DATA_SUCCESS,
-    items
+    items: items
   };
 }
 
@@ -37,8 +37,7 @@ export function ticketsFetchData(userRequest) {
         dispatch(isLoading(false));
         return res;
       })
-      .then(res => res.data.tickets)
-      .then(tickets => dispatch(fetchDataSuccess(tickets)))
+      .then(tickets => dispatch(fetchDataSuccess(tickets.data)))
       .catch(() => {
         dispatch(isFailed(true));
       });

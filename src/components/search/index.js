@@ -19,13 +19,10 @@ import TextField from "../text-field";
 import "./index.scss";
 
 class Search extends React.Component {
-  // static propTypes = {
-  //   classes: PropTypes.object.isRequired,
-  //   airports: PropTypes.array.isRequired,
-  //   ticketsFetchData: PropTypes.func.isRequired,
-  //   airportsFetchData: PropTypes.func.isRequired,
-  //   tickets: PropTypes.array.isRequired
-  // };
+  static propTypes = {
+    classes: PropTypes.object.isRequired,
+    tickets: PropTypes.array.isRequired
+  };
 
   componentDidMount() {
     this.props.airportsFetchData();
@@ -38,7 +35,6 @@ class Search extends React.Component {
 
   render() {
     const { classes } = this.props;
-
     return (
       <div className="search-form-container">
         <Form

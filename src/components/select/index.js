@@ -12,7 +12,6 @@ class SimpleSelect extends React.Component {
   static propTypes = {
     input: PropTypes.object.isRequired,
     label: PropTypes.string.isRequired
-    // items: PropTypes.object.isRequired
   };
 
   state = {
@@ -71,12 +70,6 @@ class SimpleSelect extends React.Component {
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          {/* {this.props.items.length &&
-            this.props.items.map(({ name }) => (
-              <MenuItem key={Math.random()} value={name}>
-                {name}
-              </MenuItem>
-            ))} */}
           {this.getSelectAir()}
         </Select>
       </FormControl>

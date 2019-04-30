@@ -22,7 +22,7 @@ export const getAirports = () => {
 };
 
 export const getTickets = () => {
-  return axios.get(`${API_URL}/search-request`);
+  return axios.get(`${API_URL}/ticket/get_tickets`);
 };
 
 export const getBestDeals = () => {

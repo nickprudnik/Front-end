@@ -12,7 +12,6 @@ const ticketsSearchSelector = createSelector(
         ticket.fromCountry == UserRequest.from &&
         moment(ticket.dateFrom)
           .startOf("day")
-
           .isSame(moment(UserRequest.departure).startOf("day"))
     );
     fromTickets = fromTickets.filter(
