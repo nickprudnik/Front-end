@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import shortid from "shortid";
 import Seat from "./Seat";
 
 class Seats extends Component {
@@ -6,7 +7,11 @@ class Seats extends Component {
     const seats = [];
     for (let i = 1; i <= this.props.seatsAmount; i++) {
       seats.push(
-        <div className="seat" id={i + this.props.thisRowLetter}>
+        <div
+          className="seat"
+          id={i + this.props.thisRowLetter}
+          key={shortid.generate()}
+        >
           <Seat id={i + this.props.thisRowLetter} />
         </div>
       );

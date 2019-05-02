@@ -30,8 +30,7 @@ export function planeFetchData() {
   return dispatch => {
     dispatch(isLoading(true));
     getPlainShema()
-      .then(res => res.data.plane)
-      .then(plane => dispatch(fetchDataSuccess(plane)))
+      .then(plane => dispatch(fetchDataSuccess(plane.data)))
       .catch(() => {
         dispatch(hasErrored(true));
       });

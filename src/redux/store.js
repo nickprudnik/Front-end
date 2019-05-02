@@ -11,8 +11,4 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(thunk))
 );
 
-store.subscribe(() => {
-  console.log("subscribe", store.getState());
-});
-
 export default store;

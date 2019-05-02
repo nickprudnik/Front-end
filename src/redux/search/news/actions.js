@@ -33,8 +33,7 @@ export function newsFetchData({ items }) {
         dispatch(isLoading(false));
         return res;
       })
-      .then(res => res.data.news)
-      .then(news => dispatch(fetchDataSuccess(news)))
+      .then(news => dispatch(fetchDataSuccess(news.data)))
       .catch(() => {
         dispatch(isFailed(true));
       });

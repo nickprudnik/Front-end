@@ -31,17 +31,7 @@ export function bestdealsFetchData() {
     dispatch(isLoading(true));
 
     getBestDeals()
-      .then(res => {
-        if (!res.data.bestdeals.length) {
-          throw Error(res.statusText);
-        }
-
-        dispatch(isLoading(false));
-
-        return res;
-      })
-      .then(res => res.data.bestdeals)
-      .then(bestdeals => dispatch(fetchDataSuccess(bestdeals)))
+      .then(bestdeals => dispatch(fetchDataSuccess(bestdeals.data)))
       .catch(() => {
         dispatch(hasErrored(true));
       });

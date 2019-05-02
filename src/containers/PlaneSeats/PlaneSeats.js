@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { planeFetchData } from "../../redux/search/planeShema/actions";
 import { setPassengersInfo } from "../../redux/user/actions";
+import shortid from "shortid";
 
 import Rows from "./Rows";
 
@@ -41,6 +42,7 @@ class PlaneSeats extends Component {
     for (let i = 0; i < this.props.plane.rows; i++) {
       rows.push(
         <Rows
+          key={shortid.generate()}
           className={"row"}
           startingLetter={i * 3 + 65}
           subRows={this.props.plane.subRows}
@@ -58,7 +60,11 @@ class PlaneSeats extends Component {
                 <h1>Please select seats</h1>
               </div>
               <div className="exit exit--front fuselage" />
-              <div className="cabin fuselage" onClick={this.bookSeat}>
+              <div
+                className="cabin fuselage"
+                onClick={this.bookSeat}
+                key={this.props.plane.id}
+              >
                 {rows}
               </div>
               <div className="exit exit--front fuselage" />

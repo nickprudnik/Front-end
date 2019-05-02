@@ -14,7 +14,7 @@ export const resetPass = ({ email, password }) => {
 };
 
 export const getNews = () => {
-  return axios.get(`${API_URL}/latest_news`);
+  return axios.get(`${API_URL}/latest_news/get_news`);
 };
 
 export const getAirports = () => {
@@ -26,11 +26,11 @@ export const getTickets = () => {
 };
 
 export const getBestDeals = () => {
-  return axios.get(`${API_URL}/search_bestdeals`);
+  return axios.get(`${API_URL}/search_bestdeals/get_deals`);
 };
 
 export const getPlainShema = () => {
-  return axios.get(`${API_URL}/planeShemes`);
+  return axios.get(`${API_URL}/planeShemes/get_plane`);
 };
 
 export const getLuggage = () => {
