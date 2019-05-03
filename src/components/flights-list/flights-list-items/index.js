@@ -7,15 +7,21 @@ import moment from "moment";
 import Typography from "@material-ui/core/Typography";
 import FlightTakeoffIcon from "@material-ui/icons/FlightTakeoff";
 import FlightLandIcon from "@material-ui/icons/FlightLand";
+import shortid from "shortid";
 
-function FlightsListItems({ flights, classes, setSelectedFlightInfo }) {
-  const setInfo = flightInfo => {
+function FlightsListItems({
+  flights,
+  classes,
+  setTotalPrice,
+  setSelectedFlightInfo
+}) {
+  const setInfo = (price, flightInfo) => {
+    setTotalPrice(price);
     setSelectedFlightInfo(flightInfo);
   };
 
   return flights.map(
     ({
-      id,
       startTime,
       endTime,
       price,
@@ -25,7 +31,7 @@ function FlightsListItems({ flights, classes, setSelectedFlightInfo }) {
       toCountry,
       adult
     }) => (
-      <div key={id} className="flights-list-item">
+      <div key={shortid.generate()} className="flights-list-item">
         <div className="full_flight_info">
           <Typography variant="h6" color="inherit">
             {fromCountry} to {toCountry}
@@ -55,14 +61,16 @@ function FlightsListItems({ flights, classes, setSelectedFlightInfo }) {
               <Button
                 type="button"
                 className="card-buttons price"
-                onClickShowTickets={() =>
+                onClick={() =>
                   setInfo(price, {
-                    id,
                     dateFrom,
                     dateTo,
+                    fromCountry,
+                    toCountry,
                     startTime,
                     endTime,
-                    price
+                    price,
+                    adult
                   })
                 }
               >

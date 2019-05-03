@@ -1,9 +1,9 @@
-
 import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Carousel from "react-bootstrap/Carousel";
 import { newsFetchData } from "../../redux/search/news/actions";
+import shortid from "shortid";
 
 class ControlledCarousel extends React.Component {
   static propTypes = {
@@ -46,7 +46,7 @@ class ControlledCarousel extends React.Component {
       >
         {news.map(item => {
           return (
-            <Carousel.Item key={item.id} className="carousel-item">
+            <Carousel.Item key={shortid.generate()} className="carousel-item">
               <img
                 className="d-block w-100"
                 src={item.image}

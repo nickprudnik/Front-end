@@ -11,6 +11,7 @@ import { setPassengersInfo } from "../../redux/user/actions";
 import "./index.scss";
 import Details from "./expandable-panel/details";
 import Header from "./expandable-panel/header";
+import * as routes from "../../constants";
 
 class PassengersList extends Component {
   static propTypes = {
@@ -46,7 +47,7 @@ class PassengersList extends Component {
     const history = this.props.history;
     this.props.setPassengersInfo(values);
     this.props.setPassengersInfo(passengersArray);
-    return history.push("/select_seats");
+    return history.push(routes.SIGN_UP);
   };
 
   render() {

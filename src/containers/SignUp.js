@@ -41,7 +41,7 @@ class SignUp extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push(routes.HOME);
+      this.props.history.push(routes.SIGN_IN);
     }
     if (nextProps.errors) {
       this.setState({
@@ -52,7 +52,7 @@ class SignUp extends Component {
 
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push(routes.HOME);
+      this.props.history.push(routes.SIGN_IN);
     }
   }
 

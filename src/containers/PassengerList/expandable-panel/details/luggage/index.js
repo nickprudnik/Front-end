@@ -13,7 +13,7 @@ class Luggage extends React.Component {
   };
 
   componentDidMount() {
-    this.props.luggageFetchData("/luggage");
+    this.props.luggageFetchData();
   }
 
   render() {

@@ -26,15 +26,14 @@ export function isLoading(bool) {
   };
 }
 
-export function luggageFetchData({ items }) {
+export function luggageFetchData() {
   return dispatch => {
-    return getLuggage({ items })
+    return getLuggage()
       .then(res => {
         dispatch(isLoading(false));
         return res;
       })
-      .then(res => res.data.luggage)
-      .then(luggage => dispatch(fetchDataSuccess(luggage)))
+      .then(luggage => dispatch(fetchDataSuccess(luggage.data)))
       .catch(() => {
         dispatch(isFailed(true));
       });

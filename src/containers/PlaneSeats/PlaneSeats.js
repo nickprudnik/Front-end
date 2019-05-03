@@ -15,7 +15,6 @@ import EnableSeats from "./EnableSeats";
 class PlaneSeats extends Component {
   static propTypes = {
     planeFetchData: PropTypes.func.isRequired,
-    plane: PropTypes.array.isRequired,
     passengersInfo: PropTypes.array.isRequired,
     setInfo: PropTypes.func.isRequired
   };

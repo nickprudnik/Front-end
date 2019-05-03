@@ -37,13 +37,13 @@ class SignIn extends Component {
 
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push(routes.HOME);
+      this.props.history.push(routes.SELECT_SEATS);
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push(routes.HOME);
+      this.props.history.push(routes.SELECT_SEATS);
     }
     if (nextProps.errors) {
       this.setState({

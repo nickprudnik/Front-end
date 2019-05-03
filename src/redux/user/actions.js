@@ -34,3 +34,10 @@ export function selectPassenger(id) {
     id
   };
 }
+
+export function setTotalPrice(price) {
+  return {
+    type: actionTypes.USER_TOTAL_PRICE,
+    price
+  };
+}

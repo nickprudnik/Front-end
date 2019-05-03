@@ -3,8 +3,7 @@ import moment from "moment";
 const validate = values => {
   const errors = {};
   const departureDate = moment(values.departure).format("L");
-  const returnDate =
-    values.return !== undefined ? moment(values.return).format("L") : null;
+  const returnDate = moment(values.return).format("L");
   const today = moment(new Date()).format("L");
 
   if (!values.from) {
@@ -23,7 +22,9 @@ const validate = values => {
     errors.departure = "Please, choose another day";
   }
 
-  if (returnDate <= departureDate) {
+  if (!values.return) {
+    errors.return = "Required";
+  } else if (returnDate <= departureDate) {
     errors.return = "Please, choose another day";
   }
 

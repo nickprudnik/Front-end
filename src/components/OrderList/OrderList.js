@@ -10,13 +10,8 @@ import ticketsSearchSelector from "../../selectors/ticketsSearchSelector";
 import SeatsChoice from "../../containers/PassengerSeats/index";
 
 class OrderDetails extends React.Component {
-  static propTypes = {
-    tickets: PropTypes.array.isRequired
-  };
-
   render() {
-    const { tickets } = this.props;
-
+    const { selectedFlight } = this.props;
     return (
       <section className="order-details">
         <section className="order-details__flight">
@@ -30,44 +25,33 @@ class OrderDetails extends React.Component {
             <span className="passenger_last_name" />
             <span className="passenger_patronymic_name" />
           </div>
-          {tickets.map(
-            ({
-              id,
-              startTime,
-              endTime,
-              price,
-              dateFrom,
-              dateTo,
-              fromCountry,
-              toCountry,
-              adult
-            }) => (
-              <div key={id}>
-                <div className="flight-info">
-                  <span className="flight-info__date">
-                    {moment(dateFrom).format("MMM Do")}
-                  </span>
-                  <span className="flight-info__date">
-                    {moment(dateTo).format("MMM Do")}
-                  </span>
-                  <div className="flight-info__wrapper">
-                    <span className="flight-info__direction">
-                      {fromCountry} - {toCountry}
-                    </span>
-                    <span className="flight-info__time">
-                      {startTime} - {endTime}
-                    </span>
-                  </div>
-                </div>
-                <div className="about-price">
-                  <span className="about-price__text">
-                    {adult} x Flight ticket
-                  </span>
-                  <span className="about-price__amount">$ {price}</span>
-                </div>
+
+          <div>
+            <div className="flight-info">
+              <span className="flight-info__date">
+                {moment(selectedFlight.dateFrom).format("MMM Do")}
+              </span>
+              <span className="flight-info__date">
+                {moment(selectedFlight.dateTo).format("MMM Do")}
+              </span>
+              <div className="flight-info__wrapper">
+                <span className="flight-info__direction">
+                  {selectedFlight.fromCountry} - {selectedFlight.toCountry}
+                </span>
+                <span className="flight-info__time">
+                  {selectedFlight.startTime} - {selectedFlight.endTime}
+                </span>
               </div>
-            )
-          )}
+            </div>
+            <div className="about-price">
+              <span className="about-price__text">
+                {selectedFlight.adult} x Flight ticket
+              </span>
+              <span className="about-price__amount">
+                $ {selectedFlight.price}
+              </span>
+            </div>
+          </div>
         </section>
         <SeatsChoice />
         <button type="button" className="button confirm">
@@ -79,7 +63,7 @@ class OrderDetails extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  tickets: ticketsSearchSelector(state)
+  selectedFlight: state.user.selectedFlight
 });
 
 export default compose(
