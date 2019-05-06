@@ -40,3 +40,7 @@ export const getLuggage = () => {
 export const getOrders = () => {
   return axios.get(`${API_URL}/history_order`);
 };
+
+export const postOrder = () => {
+  return axios.post(`${API_URL}/order_history/order`);
+};

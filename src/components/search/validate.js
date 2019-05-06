@@ -18,9 +18,10 @@ const validate = values => {
 
   if (!values.departure) {
     errors.departure = "Required";
-  } else if (departureDate < today) {
-    errors.departure = "Please, choose another day";
   }
+  //else if (departureDate < today) {
+  //   errors.departure = "Please, choose another day";
+  // }
 
   if (!values.return) {
     errors.return = "Required";

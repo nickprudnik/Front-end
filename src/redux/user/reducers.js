@@ -5,6 +5,7 @@ function userState() {
   return {
     request: {},
     selectedFlight: [],
+    selectedDeal: [],
     passengersInfo: [],
     selectedPassenger: 0,
     totalPrice: 0
@@ -28,6 +29,10 @@ const user = handleActions(
     [actionTypes.USER_SELECTED_FLIGHT_INFO]: (state, action) => ({
       ...state,
       selectedFlight: action.flightInfo
+    }),
+    [actionTypes.USER_SELECTED_DEAL_INFO]: (state, action) => ({
+      ...state,
+      selectedDeal: action.dealInfo
     }),
     [actionTypes.USER_TOTAL_PRICE]: (state, action) => ({
       ...state,

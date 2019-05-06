@@ -14,6 +14,13 @@ export function setSelectedFlightInfo(flightInfo) {
   };
 }
 
+export function setSelectedBestDealInfo(dealInfo) {
+  return {
+    type: actionTypes.USER_SELECTED_DEAL_INFO,
+    dealInfo
+  };
+}
+
 export function getPlaneLayout(layout) {
   return {
     type: actionTypes.PLANE_LAYOUT,

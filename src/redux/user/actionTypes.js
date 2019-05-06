@@ -3,6 +3,7 @@ import keyMirror from "keymirror";
 export default keyMirror({
   USER_REQUEST: null,
   USER_SELECTED_FLIGHT_INFO: null,
+  USER_SELECTED_DEAL_INFO: null,
   PLANE_LAYOUT: null,
   USER_TOTAL_PRICE: null,
   PASSENGERS_INFO: null,

@@ -1,20 +1,19 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
-import Button from "react-bootstrap/Button";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import moment from "moment";
 import { bestdealsFetchData } from "../../redux/search/bestDeals/actions";
-import { Link } from "react-router-dom";
+import { setSelectedBestDealInfo } from "../../redux/user/actions";
+import BookingButton from "./index";
 
 class BestDeals extends React.Component {
   static propTypes = {
     bestdealsFetchData: PropTypes.func.isRequired,
-    bestdeals: PropTypes.array.isRequired
+    bestdeals: PropTypes.array.isRequired,
+    setSelectedBestDealInfo: PropTypes.func.isRequired
   };
 
   render() {
-    const { bestdeals } = this.props;
     return (
       <Table responsive>
         <thead>
@@ -26,37 +25,17 @@ class BestDeals extends React.Component {
             <th>From Country</th>
             <th>To Country</th>
             <th>Price</th>
+            <th>Adult</th>
             <th>Book right now ⤋</th>
           </tr>
         </thead>
         <tbody>
-          {bestdeals.map(
-            ({
-              id,
-              dateFrom,
-              dateTo,
-              startTime,
-              endTime,
-              fromCountry,
-              toCountry,
-              price
-            }) => (
-              <tr key={id}>
-                <td>{moment(dateFrom).format("LL")}</td>
-                <td>{moment(dateTo).format("LL")}</td>
-                <td>{startTime}</td>
-                <td>{endTime}</td>
-                <td>{fromCountry}</td>
-                <td>{toCountry}</td>
-                <td>{price}</td>
-                <Link to="/select_seats">
-                  <td>
-                    <Button className="card-buttons">BOOK IT</Button>
-                  </td>
-                </Link>
-              </tr>
-            )
-          )}
+          {
+            <BookingButton
+              bestdeals={this.props.bestdeals}
+              setSelectedBestDealInfo={this.props.setSelectedBestDealInfo}
+            />
+          }
         </tbody>
       </Table>
     );
@@ -66,11 +45,15 @@ class BestDeals extends React.Component {
 const mapStateToProps = state => ({
   bestdeals: state.searchPage.bestDeals.items,
   bestdealsHasErrored: state.searchPage.bestDeals.hasErrored,
-  bestdealsIsLoading: state.searchPage.bestDeals.isLoading
+  bestdealsIsLoading: state.searchPage.bestDeals.isLoading,
+  selectedDeal: state.user.selectedDeal
 });
 
 const mapDispatchToProps = dispatch => ({
-  bestdealsFetchData: (url, values) => dispatch(bestdealsFetchData(url, values))
+  bestdealsFetchData: (url, values) =>
+    dispatch(bestdealsFetchData(url, values)),
+  setSelectedBestDealInfo: dealInfo =>
+    dispatch(setSelectedBestDealInfo(dealInfo))
 });
 
 export default connect(
