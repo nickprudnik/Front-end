@@ -4,18 +4,26 @@ import {
   BOOKING_ORDER_HAS_ERRORED
 } from "../../search/actionTypes";
 
-export const registerOrder = order => dispatch => {
-  postOrder(order)
-    .then(res => {
-      dispatch(registerOrderSuccess(res));
-    })
-    .catch(err => {
-      dispatch({
-        type: BOOKING_ORDER_HAS_ERRORED,
-        payload: err.response.data
-      });
-    });
-};
+// export const registerOrder = historyOrder => dispatch => {
+//   postOrder(historyOrder)
+//     .then(res => {
+//       dispatch(registerOrderSuccess(res));
+//     })
+//     .catch(err => {
+//       dispatch({
+//         type: BOOKING_ORDER_HAS_ERRORED,
+//         payload: err.response.data
+//       });
+//     });
+// };
+
+export function registerOrder() {
+  return dispatch => {
+    postOrder().then(historyOrder =>
+      dispatch(registerOrderSuccess(historyOrder.data))
+    );
+  };
+}
 
 export const registerOrderSuccess = data => {
   return {

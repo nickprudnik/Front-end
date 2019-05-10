@@ -18,6 +18,9 @@ class SearchOrder extends React.Component {
     const historyOrder = this.props.selectedFlight;
     historyOrder.userId = this.props.userId;
     console.log(historyOrder);
+    console.log(this.props.userId);
+
+    this.props.registerOrder(historyOrder);
     // const flights = Object.keys(selectedFlight);
     // console.log(flights);
 
